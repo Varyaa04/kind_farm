@@ -67,13 +67,50 @@
     <Compile Include="admin\adminPage.xaml.cs">
       <DependentUpon>adminPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="admin\products\addEditProduct.xaml.cs">
+      <DependentUpon>addEditProduct.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="admin\products\adminPageProducts.xaml.cs">
+      <DependentUpon>adminPageProducts.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="admin\users\addEditUser.xaml.cs">
+      <DependentUpon>addEditUser.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="admin\users\usersPage.xaml.cs">
+      <DependentUpon>usersPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="manager\managePage.xaml.cs">
       <DependentUpon>managePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="manager\singleOrder.xaml.cs">
+      <DependentUpon>singleOrder.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="user\cartPage.xaml.cs">
+      <DependentUpon>cartPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="user\productsPage.xaml.cs">
       <DependentUpon>productsPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="user\singleProduct.xaml.cs">
+      <DependentUpon>singleProduct.xaml</DependentUpon>
+    </Compile>
     <Page Include="admin\adminPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="admin\products\addEditProduct.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="admin\products\adminPageProducts.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="admin\users\addEditUser.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="admin\users\usersPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -169,7 +206,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="manager\singleOrder.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="user\cartPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="user\productsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="user\singleProduct.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -222,6 +271,8 @@
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
+    <Resource Include="user\klipartz.com.png" />
+    <Resource Include="user\lupa.png" />
     <Resource Include="icon.png" />
   </ItemGroup>
   <ItemGroup>

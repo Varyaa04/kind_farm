@@ -1,4 +1,5 @@
-﻿using System;
+﻿using kind_farm.Conn_DB;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,25 @@ namespace kind_farm.admin
         public adminPage()
         {
             InitializeComponent();
+        }
+
+        private void btnBack_Click(object sender, RoutedEventArgs e)
+        {
+            if (MessageBox.Show("Вы точно хотите вернуться назад?", "Внимание", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+            {
+                AppFrame.frame.GoBack();
+            }
+        }
+
+        private void btnUsers_Click(object sender, RoutedEventArgs e)
+        {
+            AppFrame.frame.Navigate(new users.usersPage());
+        }
+
+        private void btnProducts_Click(object sender, RoutedEventArgs e)
+        {
+            AppFrame.frame.Navigate(new products.adminPageProducts());
+
         }
     }
 }

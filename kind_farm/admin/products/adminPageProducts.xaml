@@ -1,12 +1,12 @@
-﻿<Page x:Class="kind_farm.user.productsPage"
+﻿<Page x:Class="kind_farm.admin.products.adminPageProducts"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:kind_farm.user"
+      xmlns:local="clr-namespace:kind_farm.admin.products"
       mc:Ignorable="d" 
-      d:DesignHeight="650" d:DesignWidth="1100" Background="#FFB7F5C9"
-      Title="productsPage">
+      d:DesignHeight="650" d:DesignWidth="1100"
+      Title="adminPageProducts">
 
     <Grid>
         <ListView x:Name="listProduct" d:ItemsSource="{d:SampleData ItemCount=5}" Background="#FFA0EFD8" Margin="0,204,0,0">
@@ -15,14 +15,14 @@
                     <Grid Height="199" Width="1068">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="293"/>
-                            <ColumnDefinition Width="450"/>
-                            <ColumnDefinition Width="0"/>
+                            <ColumnDefinition Width="365"/>
+                            <ColumnDefinition Width="85"/>
                         </Grid.ColumnDefinitions>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="155"/>
                         </Grid.RowDefinitions>
-                        <Image Source="{Binding currentPhoto}" Grid.ColumnSpan="2" Margin="0,0,446,-34"/>
-                        <StackPanel Grid.Column="1" Margin="10,30,0,-3">
+                        <Image Source="{Binding currentPhoto}" Grid.ColumnSpan="2" Margin="0,0,360,-34"/>
+                        <StackPanel Grid.Column="1" Margin="10,30,80,-22">
                             <TextBlock Height="37" TextAlignment="Center" FontSize="24" FontFamily="Microsoft JhengHei UI">
                                 <Run Text="{Binding name_product_table.name_product}"/>
                             </TextBlock>
@@ -33,7 +33,7 @@
                                 <Run Text="{Binding type_product_table.type_product}"/>
                             </TextBlock>
                         </StackPanel>
-                        <StackPanel Grid.Column="2" Margin="10,0,-315,-34">
+                        <StackPanel Grid.Column="2" Margin="10,0,-325,-46">
                             <TextBlock Visibility="Hidden" Height="29">
                                 <Run Text="{Binding id_product}"/>
                             </TextBlock>
@@ -46,7 +46,10 @@
                                 <Run Text=" руб."/>
                             </TextBlock>
                             <Button x:Name="btnAddCart" Content="В корзину" Height="47" Width="170"  Background="#FF8BCEBD" FontSize="24" Foreground="#FF02354A" BorderBrush="#FF02354A" />
-                            <Button x:Name="btnSingle" Content="Подробнее" Height="34" Width="127"  Background="{x:Null}" FontSize="18" Foreground="#FF02354A" BorderBrush="{x:Null}" />
+                            <StackPanel Height="65" Orientation="Horizontal" Margin="15,15,0,0" Width="306">
+                                <Button x:Name="btnEdit" Content="Изменить" Background="#FF8BCEBD" FontSize="24" Foreground="#FF02354A" BorderBrush="#FF02354A" Width="120" Height="55" />
+                                <Button x:Name="btnDel" Content="Удалить" Background="#FF8BCEBD" FontSize="24" Foreground="#FF02354A" BorderBrush="#FF02354A" Width="120" Margin="55,0,0,0" Height="55" />
+                            </StackPanel>
 
                         </StackPanel>
                     </Grid>
@@ -78,6 +81,6 @@
             </Button.Background>
         </Button>
         <TextBlock x:Name="tbCounter" HorizontalAlignment="Left" Margin="767,119,0,0" TextWrapping="Wrap" Text="TextBlock"  FontSize="24" FontFamily="Microsoft JhengHei UI" VerticalAlignment="Top" Height="33" Width="309"/>
-
+        <Button x:Name="btnAdd" Content="+" Background="#FF8BCEBD" FontSize="46" Foreground="#FF02354A" BorderBrush="#FF02354A" Margin="859,4,168,578" Click="btnAdd_Click"  />
     </Grid>
 </Page>
