@@ -35,7 +35,7 @@ namespace kind_farm.admin.products
             cbSort.Items.Add("По убыванию цены");
             cbSort.Items.Add("По названию от А-Я");
             cbSort.Items.Add("По названию от Я-А");
-
+            cbSort.SelectedIndex = 0;
             if (products.Count > 0)
             {
                 tbCounter.Text = "Найдено " + products.Count + " продуктов";
@@ -44,8 +44,11 @@ namespace kind_farm.admin.products
             {
                 tbCounter.Text = "Ничего не найдено";
             }
-            cbFilter.Items.Add("Фильтрация");
-            cbFilter.ItemsSource = Entities.GetContext().type_product_table.Select(x => x.type_product).ToList();
+            var productTypes = Entities.GetContext().type_product_table.Select(x => x.type_product).ToList();
+
+            productTypes.Insert(0, "Фильтрация");
+            cbFilter.ItemsSource = productTypes;
+            cbFilter.SelectedIndex = 0;
 
             if (authUser != null)
             {
@@ -142,7 +145,7 @@ namespace kind_farm.admin.products
         private void cbFilter_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
-            if (cbFilter.SelectedIndex == -1)
+            if (cbFilter.SelectedIndex == 0)
             {
                 findGoods();
             }
@@ -151,7 +154,7 @@ namespace kind_farm.admin.products
 
         private void cbSort_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (cbFilter.SelectedIndex == -1)
+            if (cbFilter.SelectedIndex == 0)
             {
                 findGoods();
             }

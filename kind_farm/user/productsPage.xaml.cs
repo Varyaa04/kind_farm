@@ -43,9 +43,13 @@ namespace kind_farm.user
             {
                 tbCounter.Text = "Ничего не найдено";
             }
-            cbFilter.Items.Add("Фильтрация");
-            cbFilter.ItemsSource = Entities.GetContext().type_product_table.Select(x => x.type_product).ToList();
+            var productTypes = Entities.GetContext().type_product_table.Select(x => x.type_product).ToList();
 
+            productTypes.Insert(0, "Фильтрация");
+            cbFilter.ItemsSource = productTypes;
+
+            cbFilter.SelectedIndex = 0;
+            cbSort.SelectedIndex = 0;
             if (authUser != null)
             {
                 _authOrd = authUser;
@@ -155,7 +159,7 @@ namespace kind_farm.user
         private void cbFilter_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
-            if (cbFilter.SelectedIndex == -1)
+            if (cbFilter.SelectedIndex == 0)
             {
                 findGoods();
             }
@@ -164,7 +168,7 @@ namespace kind_farm.user
 
         private void cbSort_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (cbFilter.SelectedIndex == -1)
+            if (cbFilter.SelectedIndex == 0)
             {
                 findGoods();
             }

@@ -24,15 +24,16 @@ namespace kind_farm.admin.users
         public usersPage()
         {
             InitializeComponent();
+            List<users_table> users = new List<users_table>();
 
-            //if (tbCounter.Count > 0)
-            //{
-            //    tbCounter.Text = "Найдено " + tbCounter.Count + " пользователей";
-            //}
-            //else
-            //{
-            //    tbCounter.Text = "Ничего не найдено";
-            //}
+            if (users.Count > 0)
+            {
+                tbCounter.Text = "Найдено " + users.Count + " пользователей";
+            }
+            else
+            {
+                tbCounter.Text = "Ничего не найдено";
+            }
         }
 
         private void pageVisible(object sender, DependencyPropertyChangedEventArgs e)
@@ -98,6 +99,9 @@ namespace kind_farm.admin.users
             listUsers.ItemsSource = user;
         }
 
-       
+        private void tbSearch_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            findUsers();
+        }
     }
 }
