@@ -8,12 +8,12 @@
       d:DesignHeight="650" d:DesignWidth="1100"
       Title="authorization" Background="#FFB7F5C9">
 
-    <Grid>
+    <Grid KeyDown="Grid_KeyDown">
         <Label x:Name="lb" Content="Добро пожаловать!" HorizontalAlignment="Center" Margin="0,41,0,0" VerticalAlignment="Top" FontSize="36"/>
         <Label x:Name="lbLog" Content="Введите логин:" HorizontalAlignment="Left" Margin="376,208,0,0" VerticalAlignment="Top" Height="42" Width="297" FontSize="24"/>
         <TextBox x:Name="tbLog" HorizontalAlignment="Center" Margin="0,250,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="288" Height="45" FontSize="24"/>
         <Label x:Name="lbPass" Content="Введите пароль:" HorizontalAlignment="Left" Margin="376,325,0,0" VerticalAlignment="Top" Width="246" Height="39" FontSize="24"/>
-        <PasswordBox x:Name="tpPass" HorizontalAlignment="Center" Margin="0,364,0,0" VerticalAlignment="Top" Width="288" Height="45" FontSize="24"/>
+        <PasswordBox x:Name="tpPass" HorizontalAlignment="Center" Margin="0,364,0,0" VerticalAlignment="Top" Width="288" Height="45" FontSize="24" KeyDown="tpPass_KeyDown"/>
         <Button x:Name="btnAuth" Content="Войти" HorizontalAlignment="Center" Margin="0,492,0,0" VerticalAlignment="Top" Height="47" Width="188" Background="#FF8BCEBD" FontSize="24" Foreground="#FF02354A" BorderBrush="#FF02354A" Click="btnAuth_Click"/>
         <Button x:Name="btnReg" Content="Зарегистрироваться" Margin="431,544,431,72" BorderBrush="{x:Null}" Background="{x:Null}" Foreground="#FF1B0E77" FontSize="20" Click="btnReg_Click"/>
         <Label Content="Label" HorizontalAlignment="Left" Margin="456,-60,0,0" VerticalAlignment="Top"/>

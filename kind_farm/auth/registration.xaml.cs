@@ -100,6 +100,10 @@ namespace kind_farm.auth
             {
                 e.Handled = true;
             }
+            if (e.Key == Key.Tab || e.Key == Key.Enter)
+            {
+                tbName.Focus();
+            }
         }
 
         private void tbRep_PasswordChanged(object sender, RoutedEventArgs e)
@@ -124,6 +128,10 @@ namespace kind_farm.auth
             {
                 e.Handled = true;
             }
+            if (e.Key == Key.Tab || e.Key == Key.Enter)
+            {
+                tbEmail.Focus();
+            }
         }
 
         private void tbPhone_KeyDown(object sender, KeyEventArgs e)
@@ -131,6 +139,10 @@ namespace kind_farm.auth
             if ((e.Key < Key.D0 || e.Key > Key.D9) && e.Key != Key.Back)
             {
                 e.Handled = true;
+            }
+            if (e.Key == Key.Tab || e.Key == Key.Enter)
+            {
+                tbLogin.Focus();
             }
         }
 
@@ -161,6 +173,38 @@ namespace kind_farm.auth
                 btnReg.IsEnabled = true;
                 tbRep.Background = Brushes.LightGreen;
                 tbRep.BorderBrush = Brushes.Green;
+            }
+        }
+
+        private void tbEmail_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Tab || e.Key == Key.Enter)
+            {
+                tbPhone.Focus();
+            }
+        }
+
+        private void tbLogin_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Tab || e.Key == Key.Enter)
+            {
+                tbPass.Focus();
+            }
+        }
+
+        private void tbPass_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Tab || e.Key == Key.Enter)
+            {
+                tbRep.Focus();
+            }
+        }
+
+        private void tbRep_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Tab || e.Key == Key.Enter)
+            {
+                btnReg.Focus();
             }
         }
     }

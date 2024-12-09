@@ -59,7 +59,7 @@ namespace kind_farm.auth
                                 MessageBox.Show("Здравствуйте, " + userobj.surname + " " + userobj.name + "!", "Добро пожаловать!", MessageBoxButton.OK, MessageBoxImage.Information);
                                 App.Current.Properties["idUser"] = userobj.id_user;
                                 App.Current.Properties["idRole"] = userobj.id_role_user;
-                                AppFrame.frame.Navigate(new user.productsPage());
+                                AppFrame.frame.Navigate(new user.productsPage((sender as Button).DataContext as users_table));
                                 break;
                         }
                     }
@@ -77,6 +77,22 @@ namespace kind_farm.auth
             catch (Exception ex)
             {
                 MessageBox.Show("Произошла ошибка: " + ex, "Ошибка!", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        private void Grid_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Tab || e.Key == Key.Enter)
+            {
+                tpPass.Focus();
+            }
+        }
+
+        private void tpPass_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Tab || e.Key == Key.Enter)
+            {
+                btnAuth.Focus();
             }
         }
     }

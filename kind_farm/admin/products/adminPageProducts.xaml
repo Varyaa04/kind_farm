@@ -45,10 +45,10 @@
                                 <Run Text="{Binding cost}"/>
                                 <Run Text=" руб."/>
                             </TextBlock>
-                            <Button x:Name="btnAddCart" Content="В корзину" Height="47" Width="170"  Background="#FF8BCEBD" FontSize="24" Foreground="#FF02354A" BorderBrush="#FF02354A" />
+                            <Button x:Name="btnAddCart" Content="В корзину" Height="47" Width="170"  Background="#FF8BCEBD" FontSize="24" Foreground="#FF02354A" BorderBrush="#FF02354A" Click="btnAddCart_Click" />
                             <StackPanel Height="65" Orientation="Horizontal" Margin="15,15,0,0" Width="306">
-                                <Button x:Name="btnEdit" Content="Изменить" Background="#FF8BCEBD" FontSize="24" Foreground="#FF02354A" BorderBrush="#FF02354A" Width="120" Height="55" />
-                                <Button x:Name="btnDel" Content="Удалить" Background="#FF8BCEBD" FontSize="24" Foreground="#FF02354A" BorderBrush="#FF02354A" Width="120" Margin="55,0,0,0" Height="55" />
+                                <Button x:Name="btnEdit" Content="Изменить" Background="#FF8BCEBD" FontSize="24" Foreground="#FF02354A" BorderBrush="#FF02354A" Width="120" Height="55" Click="btnEdit_Click" />
+                                <Button x:Name="btnDel" Content="Удалить" Background="#FF8BCEBD" FontSize="24" Foreground="#FF02354A" BorderBrush="#FF02354A" Width="120" Margin="55,0,0,0" Height="55" Click="btnDel_Click" />
                             </StackPanel>
 
                         </StackPanel>
@@ -59,7 +59,7 @@
         <Button x:Name="btnBack" Content="Назад"  Height="44" Width="108" Background="#FF8BCEBD" FontSize="24" Foreground="#FF02354A" BorderBrush="#FF02354A" Margin="10,20,982,586" Click="btnBack_Click" />
         <TextBox x:Name="tbSearch" HorizontalAlignment="Left" Margin="74,123,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="279" Height="42" FontSize="24"/>
         <Image HorizontalAlignment="Left" Height="50" Margin="10,119,0,0" VerticalAlignment="Top" Width="60" Source="/user/lupa.png"/>
-        <ComboBox HorizontalAlignment="Left" Margin="452,136,0,0" VerticalAlignment="Top" Width="250" Height="42" BorderBrush="White">
+        <ComboBox x:Name="cbFilter" HorizontalAlignment="Left" Margin="452,136,0,0" VerticalAlignment="Top" Width="250" Height="42" BorderBrush="White">
             <ComboBox.Background>
                 <LinearGradientBrush EndPoint="0,1">
                     <GradientStop Color="#FFF0F0F0"/>
@@ -67,7 +67,7 @@
                 </LinearGradientBrush>
             </ComboBox.Background>
         </ComboBox>
-        <ComboBox HorizontalAlignment="Left" Margin="452,36,0,0" VerticalAlignment="Top"  Width="250" Height="42" BorderBrush="White">
+        <ComboBox x:Name="cbSort" HorizontalAlignment="Left" Margin="452,36,0,0" VerticalAlignment="Top"  Width="250" Height="42" BorderBrush="White">
             <ComboBox.Background>
                 <LinearGradientBrush EndPoint="0,1">
                     <GradientStop Color="#FFF0F0F0"/>

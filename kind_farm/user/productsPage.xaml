@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:kind_farm.user"
       mc:Ignorable="d" 
-      d:DesignHeight="650" d:DesignWidth="1100" Background="#FFB7F5C9"
+      d:DesignHeight="650" d:DesignWidth="1100" Background="#FFB7F5C9" IsVisibleChanged="pageVisible"
       Title="productsPage">
 
     <Grid>
@@ -45,8 +45,8 @@
                                 <Run Text="{Binding cost}"/>
                                 <Run Text=" руб."/>
                             </TextBlock>
-                            <Button x:Name="btnAddCart" Content="В корзину" Height="47" Width="170"  Background="#FF8BCEBD" FontSize="24" Foreground="#FF02354A" BorderBrush="#FF02354A" />
-                            <Button x:Name="btnSingle" Content="Подробнее" Height="34" Width="127"  Background="{x:Null}" FontSize="18" Foreground="#FF02354A" BorderBrush="{x:Null}" />
+                            <Button x:Name="btnAddCart" Content="В корзину" Height="47" Width="170"  Background="#FF8BCEBD" FontSize="24" Foreground="#FF02354A" BorderBrush="#FF02354A" Click="btnAddCart_Click" />
+                            <Button x:Name="btnSingle" Content="Подробнее" Height="34" Width="127"  Background="{x:Null}" FontSize="18" Foreground="#FF02354A" BorderBrush="{x:Null}" Click="btnSingle_Click" />
 
                         </StackPanel>
                     </Grid>
@@ -54,9 +54,9 @@
             </ListView.ItemTemplate>
         </ListView>
         <Button x:Name="btnBack" Content="Назад"  Height="44" Width="108" Background="#FF8BCEBD" FontSize="24" Foreground="#FF02354A" BorderBrush="#FF02354A" Margin="10,20,982,586" Click="btnBack_Click" />
-        <TextBox x:Name="tbSearch" HorizontalAlignment="Left" Margin="74,123,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="279" Height="42" FontSize="24"/>
+        <TextBox x:Name="tbSearch" HorizontalAlignment="Left" Margin="74,123,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="279" Height="42" FontSize="24" TextChanged="tbSearch_TextChanged"/>
         <Image HorizontalAlignment="Left" Height="50" Margin="10,119,0,0" VerticalAlignment="Top" Width="60" Source="/user/lupa.png"/>
-        <ComboBox HorizontalAlignment="Left" Margin="452,136,0,0" VerticalAlignment="Top" Width="250" Height="42" BorderBrush="White">
+        <ComboBox x:Name="cbSort" HorizontalAlignment="Left" Margin="452,136,0,0" VerticalAlignment="Top" Width="250" Height="42" BorderBrush="White" SelectionChanged="cbSort_SelectionChanged">
             <ComboBox.Background>
                 <LinearGradientBrush EndPoint="0,1">
                     <GradientStop Color="#FFF0F0F0"/>
@@ -64,7 +64,7 @@
                 </LinearGradientBrush>
             </ComboBox.Background>
         </ComboBox>
-        <ComboBox HorizontalAlignment="Left" Margin="452,36,0,0" VerticalAlignment="Top"  Width="250" Height="42" BorderBrush="White">
+        <ComboBox x:Name="cbFilter" HorizontalAlignment="Left" Margin="452,36,0,0" VerticalAlignment="Top"  Width="250" Height="42" BorderBrush="White" SelectionChanged="cbFilter_SelectionChanged">
             <ComboBox.Background>
                 <LinearGradientBrush EndPoint="0,1">
                     <GradientStop Color="#FFF0F0F0"/>

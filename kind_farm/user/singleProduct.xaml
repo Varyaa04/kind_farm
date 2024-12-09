@@ -5,10 +5,44 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:kind_farm.user"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
-      Title="singleProduct">
+   d:DesignHeight="584" d:DesignWidth="1180"
+      Title="Товар"
+       Background="#FFB7F5C9">
 
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <TextBlock x:Name="labelGoods" HorizontalAlignment="Center" Margin="0,30,0,0" VerticalAlignment="Top" Height="45" Width="620" FontFamily="Verdana" FontSize="26">
+            <Run Text="{Binding name_product_table.name_product}"/>
+            <Run Text=" "/>
+            <Run Text="{Binding kind_product_table.nkind_product}"/>
+        </TextBlock>
+        <Button x:Name="btnBack" Content="Назад" HorizontalAlignment="Left" Margin="30,30,0,0" Background="#FF8BCEBD" FontSize="24" Foreground="#FF02354A" BorderBrush="#FF02354A" VerticalAlignment="Top" Height="45" Width="125" FontFamily="Verdana" Click="btnBack_Click"/>
+        <Image x:Name="photoItem" Source="{Binding currentPhoto}" Margin="92,122,683,122"/>
+        <TextBlock HorizontalAlignment="Left" Margin="590,80,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Height="30" Width="460" FontFamily="Verdana" FontSize="22">
+            <Run Text="Категория: " />
+            <Run Text="{Binding type_product_table.type_product}"/>
+        </TextBlock>
+        <TextBlock Width="195" TextWrapping="Wrap" Height="auto"  Margin="745,395,0,114" TextAlignment="Center" FontFamily="Verdana" FontSize="22" HorizontalAlignment="Left">
+            <Run Text="{Binding weight}"/>
+            <Run Text=" "/>
+            <Run Text="{Binding unit_table.unit}"/>
+            <Run Text="/"/>
+            <Run Text="{Binding cost}"/>
+            <Run Text=" руб."/>
+        </TextBlock>
+        <TextBlock Width="auto" TextWrapping="Wrap" Height="auto"  Margin="590,151,35,309" FontFamily="Verdana" FontSize="22">
+            <Run Text="Описание: " />
+            <Run Text="{Binding description}"/>
+        </TextBlock>
+        <TextBlock Width="auto" TextWrapping="Wrap" FontSize="22" Height="auto" Margin="590,269,35,269" FontFamily="Verdana" >
+            <Run Text="Аллерген: " />
+            <Run Text="{Binding allergens_table.allergens}"/>
+        </TextBlock>
+        <StackPanel Margin="85,395,0,5" HorizontalAlignment="Left" Width="419">
+            <TextBlock Text="{Binding id_product}" Visibility="Collapsed" Height="100" Width="22"/>
+            <Button x:Name="addBasket" Grid.Column="3" Background="#FF8BCEBD" FontSize="24" Foreground="#FF02354A" BorderBrush="#FF02354A" Content="Добавить в корзину" Margin="58,74,46,76" Grid.Row="1" Grid.ColumnSpan="3" Click="addBasket_Click" Height="56" Width="247"/>
+        </StackPanel>
     </Grid>
 </Page>

@@ -5,10 +5,44 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:kind_farm.manager"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="650" d:DesignWidth="1100"  IsVisibleChanged="pageVisible"  Background="#FFB7F5C9" 
       Title="managePage">
 
     <Grid>
-        
+        <ListView x:Name="ListOrders"  Margin="0,135,0,-4" d:ItemsSource="{d:SampleData ItemCount=5}" Background="#FFA0EFD8">
+            <ListView.ItemTemplate >
+                <DataTemplate>
+                    <Grid Width="1021"  Height="221" >
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="3*"/>
+                            <RowDefinition Height="22*"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="541" />
+                            <ColumnDefinition Width="628"/>
+                        </Grid.ColumnDefinitions>
+                        <StackPanel Width="auto" Orientation="Vertical" Margin="18,18,540,0" Grid.Row="1" Grid.ColumnSpan="2" Height="171" VerticalAlignment="Top">
+                            <TextBlock Width="auto" TextWrapping="Wrap" Height="32" TextAlignment="Left" FontSize="24">
+                                <Run Text="Логин: "/>
+                                <Run Text="{Binding orders_table.users_table.login}"/>
+                            </TextBlock>
+                            <TextBlock Width="626" TextWrapping="Wrap" Height="auto" Margin="0,15,0,0" FontSize="24" >
+                                <Run Text="Статус заказа: " />
+                                <Run Text="{Binding orders_table.status_table.status}"/>
+                            </TextBlock>
+                        </StackPanel>
+                        <StackPanel Margin="51,0,0,15" Grid.RowSpan="2" Grid.Column="1">
+                            <TextBlock Text="{Binding id_order_manager}" Visibility="Collapsed" Height="100" Width="22"/>
+                            <TextBlock Text="{Binding id_order}" Visibility="Collapsed" Height="100" Width="22"/>
+                            <Button x:Name="btnDel" Grid.Column="1" Content="Удалить" Background="#FF8BCEBD" FontSize="24" Foreground="#FF02354A" BorderBrush="#FF02354A"  Margin="117,50,232,21" Grid.Row="1" Click="btnDel_Click" Height="48" Width="159"/>
+                            <Button x:Name="btnMore" Grid.Column="1" Content="Подробнее" Background="#FF8BCEBD" FontSize="24" Foreground="#FF02354A" BorderBrush="#FF02354A"  Margin="118,15,232,100" Grid.Row="1" Click="btnMore" Height="49" Width="163"/>
+                        </StackPanel>
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <Label x:Name="txtOrder" Content="Заказы" HorizontalAlignment="Left" Margin="503,32,0,0" VerticalAlignment="Top" FontFamily="Verdana" FontSize="26"/>
+        <Button x:Name="btnBack" Content="Выход" HorizontalAlignment="Left" Margin="30,27,0,0" VerticalAlignment="Top" Height="47" Width="135" Background="#FF8BCEBD" FontSize="24" Foreground="#FF02354A" BorderBrush="#FF02354A" Click="btnBack_Click"/>
+        <Button x:Name="btnCatalog" Content="Перейти в каталог" HorizontalAlignment="Left" Margin="850,32,0,0" VerticalAlignment="Top" Height="42" Width="205" Background="#FF8BCEBD" FontSize="24" Foreground="#FF02354A" BorderBrush="#FF02354A"  Click="btnCatalog_Click"/>
     </Grid>
 </Page>
