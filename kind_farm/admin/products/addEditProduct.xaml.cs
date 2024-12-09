@@ -222,5 +222,10 @@ namespace kind_farm.admin.products
                 btnSave.Focus();
             }
         }
+
+        private void tbPass_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
     }
 }

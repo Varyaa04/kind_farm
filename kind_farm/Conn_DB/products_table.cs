@@ -31,14 +31,14 @@ namespace kind_farm.Conn_DB
         public string picture { get; set; }
         public string description { get; set; }
         public Nullable<int> id_allergens { get; set; }
-
+    
         public string currentPhoto
         {
             get
             {
                 if (string.IsNullOrEmpty(picture) || string.IsNullOrWhiteSpace(picture))
                 {
-                    return "/img/picture.png";
+                    return "/img/none.png";
                 }
                 else
                 {
@@ -46,7 +46,6 @@ namespace kind_farm.Conn_DB
                 }
             }
         }
-    
         public virtual allergens_table allergens_table { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<cart_table> cart_table { get; set; }

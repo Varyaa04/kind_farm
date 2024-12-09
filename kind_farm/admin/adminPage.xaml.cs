@@ -41,7 +41,7 @@ namespace kind_farm.admin
 
         private void btnProducts_Click(object sender, RoutedEventArgs e)
         {
-            AppFrame.frame.Navigate(new products.adminPageProducts());
+            AppFrame.frame.Navigate(new admin.products.adminPageProducts((sender as Button).DataContext as users_table));
 
         }
     }

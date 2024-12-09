@@ -146,8 +146,8 @@ namespace kind_farm.admin.users
                     userToUpdate.email = tbEmail.Text;
                     userToUpdate.phone = tbPhone.Text;
                     userToUpdate.name = tbName.Text;
-                    userToUpdate.surname = tbSurname;
-                    userToUpdate.id_role = cbRole.SelectedIndex + 1;
+                    userToUpdate.surname = tbSurname.Text;
+                    userToUpdate.id_role_user = cbRole.SelectedIndex + 1;
 
                     AppConn.modeldb.SaveChanges();
                     MessageBox.Show("Данные пользователя успешно изменены!", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Information);
@@ -283,5 +283,9 @@ namespace kind_farm.admin.users
             }
         }
 
+        private void tbPass_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
     }
 }

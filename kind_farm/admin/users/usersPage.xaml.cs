@@ -25,14 +25,14 @@ namespace kind_farm.admin.users
         {
             InitializeComponent();
 
-            if (tbCounter.Count > 0)
-            {
-                tbCounter.Text = "Найдено " + tbCounter.Count + " пользователей";
-            }
-            else
-            {
-                tbCounter.Text = "Ничего не найдено";
-            }
+            //if (tbCounter.Count > 0)
+            //{
+            //    tbCounter.Text = "Найдено " + tbCounter.Count + " пользователей";
+            //}
+            //else
+            //{
+            //    tbCounter.Text = "Ничего не найдено";
+            //}
         }
 
         private void pageVisible(object sender, DependencyPropertyChangedEventArgs e)

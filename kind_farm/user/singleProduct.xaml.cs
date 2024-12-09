@@ -59,7 +59,7 @@ namespace kind_farm.user
                 }
                 var cartnew = new cart_table()
                 {
-                    id_order = order.idOrder,
+                    id_order = order.id_order,
                     id_product = selectedGoodsId
                 };
 

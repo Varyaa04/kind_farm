@@ -34,9 +34,10 @@ namespace kind_farm.auth
 
         private void btnAuth_Click(object sender, RoutedEventArgs e)
         {
-            var userobj = AppConn.modeldb.users_table.FirstOrDefault(x => x.login == tbLog.Text && x.password == tpPass.Password);
             try
             {
+                var userobj = AppConn.modeldb.users_table.FirstOrDefault(x => x.login == tbLog.Text && x.password == tpPass.Password);
+
                 if (userobj != null)
                 {
                     try

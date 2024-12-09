@@ -44,7 +44,7 @@ namespace kind_farm.user
                 tbCounter.Text = "Ничего не найдено";
             }
             cbFilter.Items.Add("Фильтрация");
-            cbFilter.ItemsSource = Entities.GetContext().type_product_table.Select(x => x.nameCategory).ToList();
+            cbFilter.ItemsSource = Entities.GetContext().type_product_table.Select(x => x.type_product).ToList();
 
             if (authUser != null)
             {
@@ -181,7 +181,7 @@ namespace kind_farm.user
                 int idUsers = Convert.ToInt32(App.Current.Properties["idUser"].ToString());
 
                 int selectedGoodsId = ID;
-                var order = Entities.GetContext().orders_table.FirstOrDefault(o => o.idUsers == idUsers);
+                var order = Entities.GetContext().orders_table.FirstOrDefault(o => o.id_user == idUsers);
                 if (order == null)
                 {
                     order = new orders_table()
@@ -195,7 +195,7 @@ namespace kind_farm.user
 
                 var cartnew = new cart_table()
                 {
-                    id_order = order.idOrder,
+                    id_order = order.id_order,
                     id_product = selectedGoodsId
                 };
 
