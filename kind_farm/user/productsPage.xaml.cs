@@ -1,5 +1,4 @@
-﻿using kind_farm.Conn_DB;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,20 +13,16 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace kind_farm
+namespace kind_farm.user
 {
     /// <summary>
-    /// Логика взаимодействия для MainWindow.xaml
+    /// Логика взаимодействия для productsPage.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class productsPage : Page
     {
-        public MainWindow()
+        public productsPage()
         {
             InitializeComponent();
-            AppFrame.frame = frm;
-            AppConn.modeldb = new Entities();
-
-            AppFrame.frame.Navigate(new auth.authorization());
         }
     }
 }

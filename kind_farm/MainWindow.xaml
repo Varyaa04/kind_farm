@@ -5,8 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:kind_farm"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="KindFarm" Height="750" Width="1100" Background="#FFA8E2B9" Icon="/icon.png">
     <Grid>
-        
+        <Frame x:Name="frm" Content="" Margin="0,84,0,0" NavigationUIVisibility="Hidden" Background="#FFB7F5C9" MinWidth="1100" MinHeight="650" MaxWidth="1100" MaxHeight="650"/>
+        <Label x:Name="lb" Content="Kind Farm" HorizontalAlignment="Left" Margin="298,16,0,0" VerticalAlignment="Top" FontFamily="Goudy Stout" FontSize="36" Background="{x:Null}" Foreground="#FF044233"/>
+        <Image HorizontalAlignment="Left" Height="91" Margin="704,0,0,0" VerticalAlignment="Top" Width="110" Source="/icon.png"/>
+
     </Grid>
 </Window>
