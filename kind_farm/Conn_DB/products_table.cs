@@ -31,7 +31,6 @@ namespace kind_farm.Conn_DB
         public string picture { get; set; }
         public string description { get; set; }
         public Nullable<int> id_allergens { get; set; }
-    
         public string currentPhoto
         {
             get

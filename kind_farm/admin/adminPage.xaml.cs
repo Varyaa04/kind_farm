@@ -1,4 +1,5 @@
-﻿using kind_farm.Conn_DB;
+﻿using kind_farm.auth;
+using kind_farm.Conn_DB;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,7 +31,7 @@ namespace kind_farm.admin
         {
             if (MessageBox.Show("Вы точно хотите вернуться назад?", "Внимание", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
             {
-                AppFrame.frame.GoBack();
+                AppFrame.frame.Navigate(new authorization());
             }
         }
 

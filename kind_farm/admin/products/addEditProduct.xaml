@@ -10,15 +10,15 @@
 
     <Grid>
         <Label x:Name="ls" Content="Выберите наименование:" HorizontalAlignment="Left" Margin="81,120,0,0" VerticalAlignment="Top" FontSize="24"/>
-        <ComboBox x:Name="cbName" Text="{Binding name_product_table.name_product}" HorizontalAlignment="Left" Margin="221,162,0,0" VerticalAlignment="Top" Width="194" Height="36" FontSize="24" KeyDown="cbName_KeyDown"/>
+        <ComboBox x:Name="cbName" SelectedValue="{Binding products_table.id_name_product}" SelectedValuePath="name_product_table.name_product" ItemsSource="{Binding name_product_table}" DisplayMemberPath="name_product" HorizontalAlignment="Left" Margin="221,162,0,0" VerticalAlignment="Top" Width="194" Height="36" FontSize="24" KeyDown="cbName_KeyDown"/>
         <Label x:Name="ln" Content="Выберите тип:" HorizontalAlignment="Left" Margin="81,218,0,0" VerticalAlignment="Top" FontSize="24"/>
-        <ComboBox x:Name="cbType" HorizontalAlignment="Left"  Text="{Binding type_product_table.type_product}" Width="194" Height="36" Margin="221,260,0,0" VerticalAlignment="Top" FontSize="24" KeyDown="cbType_KeyDown" />
+        <ComboBox x:Name="cbType" HorizontalAlignment="Left"  SelectedValue="{Binding products_table.id_type_product}" SelectedValuePath="type_product_table.type_product" ItemsSource="{Binding type_product_table}" DisplayMemberPath="type_product" Width="194" Height="36" Margin="221,260,0,0" VerticalAlignment="Top" FontSize="24" KeyDown="cbType_KeyDown" />
         <Label x:Name="le" Content="Выберите вид:" HorizontalAlignment="Left" Margin="81,299,0,0" VerticalAlignment="Top" FontSize="24"/>
-        <ComboBox x:Name="cbKind" HorizontalAlignment="Left" Text="{Binding kind_product_table.kind_product}" Margin="221,341,0,0" VerticalAlignment="Top"  Width="194" Height="36" FontSize="24" KeyDown="cbKind_KeyDown"/>
+        <ComboBox x:Name="cbKind" HorizontalAlignment="Left" SelectedValue="{Binding products_table.id_kind_product}" SelectedValuePath="kind_product_table.kind_product" ItemsSource="{Binding kind_product_table}" DisplayMemberPath="kind_product" Margin="221,341,0,0" VerticalAlignment="Top"  Width="194" Height="36" FontSize="24" KeyDown="cbKind_KeyDown"/>
         <Label x:Name="lp" Content="Введите вес:" HorizontalAlignment="Left" Margin="81,382,0,0" VerticalAlignment="Top" FontSize="24"/>
         <TextBox x:Name="tbweight" HorizontalAlignment="Left" Text="{Binding weight}" Margin="221,429,0,0" TextWrapping="Wrap"  VerticalAlignment="Top"  Width="194" Height="36" FontSize="24" KeyDown="tbweight_KeyDown"/>
         <Label x:Name="ll" Content="Выберите ед. измерения:" HorizontalAlignment="Left" Margin="602,120,0,0" VerticalAlignment="Top" FontSize="24"/>
-        <ComboBox x:Name="cbUnit" HorizontalAlignment="Left" Text="{Binding unit_table.unit}" Margin="746,162,0,0" VerticalAlignment="Top"  Width="194" Height="36" FontSize="24" KeyDown="cbUnit_KeyDown"/>
+        <ComboBox x:Name="cbUnit" HorizontalAlignment="Left" SelectedValue="{Binding products_table.id_unit}" SelectedValuePath="unit_table.unit" ItemsSource="{Binding unit_table}" DisplayMemberPath="unit" Margin="746,162,0,0" VerticalAlignment="Top"  Width="194" Height="36" FontSize="24" KeyDown="cbUnit_KeyDown"/>
         <Label x:Name="lpass" Content="Введите цену:" HorizontalAlignment="Left" Margin="602,294,0,0" VerticalAlignment="Top" FontSize="24"/>
         <TextBox x:Name="tbCost" HorizontalAlignment="Left" Text="{Binding cost}" Margin="746,341,0,0" TextWrapping="Wrap" VerticalAlignment="Top"  Width="194" Height="36" FontSize="24" TextChanged="tbPass_TextChanged" KeyDown="tbCost_KeyDown"/>
         <Label x:Name="lpassrep" Content="Введите описание:" HorizontalAlignment="Left" Margin="621,387,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.382,0.404" FontSize="24"/>
@@ -26,7 +26,7 @@
         <Button x:Name="btnSave" Content="Сохранить" HorizontalAlignment="Center" Margin="0,512,0,0" VerticalAlignment="Top" Height="47" Width="260" Background="#FF8BCEBD" FontSize="24" Foreground="#FF02354A" BorderBrush="#FF02354A" Click="btnSave_Click"/>
         <Button x:Name="btnBack" Content="Назад" HorizontalAlignment="Left" Margin="10,26,0,0" VerticalAlignment="Top" Height="44" Width="108" Background="#FF8BCEBD" FontSize="24" Foreground="#FF02354A" BorderBrush="#FF02354A" Click="btnBack_Click"/>
         <Label x:Name="llal" Content="Выберите аллерген:" HorizontalAlignment="Left" Margin="602,218,0,0" VerticalAlignment="Top" FontSize="24"/>
-        <ComboBox x:Name="cbAller" HorizontalAlignment="Left" Text="{Binding allergens_table.allergens}" Margin="746,258,0,0" VerticalAlignment="Top"  Width="194" Height="36" FontSize="24" KeyDown="cbAller_KeyDown"/>
+        <ComboBox x:Name="cbAller" HorizontalAlignment="Left" SelectedValue="{Binding products_table.id_allergens}" SelectedValuePath="allergens_table.allergens" ItemsSource="{Binding allergens_table}" DisplayMemberPath="allergens" Margin="746,258,0,0" VerticalAlignment="Top"  Width="194" Height="36" FontSize="24" KeyDown="cbAller_KeyDown"/>
 
     </Grid>
 </Page>

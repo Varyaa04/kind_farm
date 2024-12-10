@@ -35,7 +35,7 @@ namespace kind_farm.admin.users
             }
             DataContext = _currentUser;
 
-            cbRole.ItemsSource = Entities.GetContext().role_table.Select(x => x.role).ToList();
+            cbRole.ItemsSource = Entities.GetContext().role_table.ToList();
 
             tbName.MaxLength = 50;
             tbSurname.MaxLength = 50;

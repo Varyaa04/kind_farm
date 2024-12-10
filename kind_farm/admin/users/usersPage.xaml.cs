@@ -24,7 +24,7 @@ namespace kind_farm.admin.users
         public usersPage()
         {
             InitializeComponent();
-            List<users_table> users = new List<users_table>();
+            List<users_table> users = AppConn.modeldb.users_table.ToList();
 
             if (users.Count > 0)
             {
@@ -68,7 +68,6 @@ namespace kind_farm.admin.users
                 listUsers.ItemsSource = Entities.GetContext().users_table.ToList();
                 Button b = sender as Button;
                 int ID = int.Parse(((b.Parent as StackPanel).Children[0] as TextBlock).Text);
-                Console.WriteLine(ID);
                 AppConn.modeldb.users_table.Remove(
                     AppConn.modeldb.users_table.Where(x => x.id_user == ID).First());
                 AppConn.modeldb.SaveChanges();

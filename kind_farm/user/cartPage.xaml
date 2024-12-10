@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:kind_farm.user"
       mc:Ignorable="d" 
        d:DesignHeight="650" d:DesignWidth="1100" Background="#FFB7F5C9"
-      Title="cartPage">
+      Title="cartPage" IsVisibleChanged="Page_IsVisibleChanged">
 
     <Grid>
         <ListView x:Name="listProduct" d:ItemsSource="{d:SampleData ItemCount=5}" Background="#FFA0EFD8" Margin="0,73,0,82">
@@ -34,9 +34,7 @@
                             </TextBlock>
                         </StackPanel>
                         <StackPanel Grid.Column="2" Margin="10,0,-315,-34">
-                            <TextBlock Visibility="Hidden" Height="29">
-                                <Run Text="{Binding products_table.id_product}"/>
-                            </TextBlock>
+                            <TextBlock Visibility="Hidden" Height="29" Text="{Binding products_table.id_product}"/>
                             <TextBlock Height="45" FontSize="24" FontFamily="Microsoft JhengHei UI" Width="264">
                                  <Run Text="{Binding products_table.weight}"/>
                                 <Run Text=" "/>
@@ -51,10 +49,10 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
+        <TextBlock x:Name="tbCounter" HorizontalAlignment="Left" Margin="10,593,0,0" TextWrapping="Wrap" Text="TextBlock"  FontSize="24" FontFamily="Microsoft JhengHei UI" VerticalAlignment="Top" Height="33" Width="309"/>
         <Button x:Name="btnBack" Content="Назад"  Height="44" Width="108" Background="#FF8BCEBD" FontSize="24" Foreground="#FF02354A" BorderBrush="#FF02354A" Margin="10,10,982,596" Click="btnBack_Click" />
-        <Button x:Name="btnOrder" Content=" Оформить заказ"  Height="44" Background="#FF8BCEBD" FontSize="24" Foreground="#FF02354A" BorderBrush="#FF02354A" Margin="883,596,10,10" Click="btnBack_Click" />
+        <Button x:Name="btnOrder" Content=" Оформить заказ"  Height="44" Background="#FF8BCEBD" FontSize="24" Foreground="#FF02354A" BorderBrush="#FF02354A" Margin="856,573,37,33" Click="btnOrder_Click" />
         <Label x:Name="lbCart" FontSize="36" Content="Корзина" HorizontalAlignment="Center" Margin="0,10,0,0" VerticalAlignment="Top"/>
-        <TextBlock HorizontalAlignment="Center" Margin="0,284,0,0" TextWrapping="Wrap" Text="Ваша корзина пуста!" VerticalAlignment="Top" Width="476" Height="74" FontSize="48"/>
 
     </Grid>
 </Page>

@@ -14,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Xml.Linq;
 
 namespace kind_farm.admin.products
 {
@@ -33,11 +34,21 @@ namespace kind_farm.admin.products
                 _currentProduct = currentProducts;
             }
             DataContext = _currentProduct;
+
+            cbName.ItemsSource = Entities.GetContext().name_product_table.ToList();
+            cbType.ItemsSource = Entities.GetContext().type_product_table.ToList();
+            cbKind.ItemsSource = Entities.GetContext().kind_product_table.ToList();
+            cbUnit.ItemsSource = Entities.GetContext().unit_table.ToList();
+            cbAller.ItemsSource = Entities.GetContext().allergens_table.ToList();
+
+            tbweight.MaxLength = 2;
+            tbCost.MaxLength = 5;
+            cbName.Focus();
         }
 
         private void btnBack_Click(object sender, RoutedEventArgs e)
         {
-            AppFrame.frame.GoBack();
+            AppFrame.frame.Navigate(new adminPageProducts((sender as Button).DataContext as users_table));
         }
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
@@ -131,6 +142,10 @@ namespace kind_farm.admin.products
 
             if (string.IsNullOrEmpty(tbweight.Text))
                 errors.AppendLine("Введите вес продукта.");
+            if (Convert.ToInt32(tbweight.Text) == 0)
+                errors.AppendLine("Вес продукта не может быть равен 0.");
+            if (Convert.ToInt32(tbCost.Text) == 0)
+                errors.AppendLine("Цена продукта не может быть равен 0.");
             if (string.IsNullOrEmpty(tbCost.Text))
                 errors.AppendLine("Введите цену.");
             if (cbName.SelectedIndex == -1)

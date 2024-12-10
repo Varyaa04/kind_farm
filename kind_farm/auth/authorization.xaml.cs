@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Xml.Linq;
 
 namespace kind_farm.auth
 {
@@ -24,6 +25,9 @@ namespace kind_farm.auth
         public authorization()
         {
             InitializeComponent();
+
+            tbLog.MaxLength = 20;
+            tpPass.MaxLength = 25;
             tbLog.Focus();
         }
 

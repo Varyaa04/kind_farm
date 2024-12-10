@@ -34,9 +34,7 @@
                             </TextBlock>
                         </StackPanel>
                         <StackPanel Grid.Column="2" Margin="10,0,-315,-34">
-                            <TextBlock Visibility="Hidden" Height="29">
-                                <Run Text="{Binding id_product}"/>
-                            </TextBlock>
+                            <TextBlock Visibility="Hidden" Height="29" Text="{Binding id_product}"/>
                             <TextBlock Height="45" FontSize="24" FontFamily="Microsoft JhengHei UI" Width="264">
                                  <Run Text="{Binding weight}"/>
                                 <Run Text=" "/>

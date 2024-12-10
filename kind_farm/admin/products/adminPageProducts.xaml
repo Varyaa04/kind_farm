@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:kind_farm.admin.products"
       mc:Ignorable="d" 
-      d:DesignHeight="650" d:DesignWidth="1100"
+      d:DesignHeight="650" d:DesignWidth="1100" IsVisibleChanged="pageVisible"
       Title="adminPageProducts">
 
     <Grid>
@@ -34,9 +34,7 @@
                             </TextBlock>
                         </StackPanel>
                         <StackPanel Grid.Column="2" Margin="10,0,-325,-46">
-                            <TextBlock Visibility="Hidden" Height="29">
-                                <Run Text="{Binding id_product}"/>
-                            </TextBlock>
+                            <TextBlock Visibility="Hidden" Height="29" Text="{Binding id_product}"/>
                             <TextBlock Height="45" FontSize="24" FontFamily="Microsoft JhengHei UI" Width="264">
                                  <Run Text="{Binding weight}"/>
                                 <Run Text=" "/>
@@ -47,6 +45,7 @@
                             </TextBlock>
                             <Button x:Name="btnAddCart" Content="В корзину" Height="47" Width="170"  Background="#FF8BCEBD" FontSize="24" Foreground="#FF02354A" BorderBrush="#FF02354A" Click="btnAddCart_Click" />
                             <StackPanel Height="65" Orientation="Horizontal" Margin="15,15,0,0" Width="306">
+                                <TextBlock Visibility="Hidden" Height="29" Width="3" Text="{Binding id_product}"/>
                                 <Button x:Name="btnEdit" Content="Изменить" Background="#FF8BCEBD" FontSize="24" Foreground="#FF02354A" BorderBrush="#FF02354A" Width="120" Height="55" Click="btnEdit_Click" />
                                 <Button x:Name="btnDel" Content="Удалить" Background="#FF8BCEBD" FontSize="24" Foreground="#FF02354A" BorderBrush="#FF02354A" Width="120" Margin="55,0,0,0" Height="55" Click="btnDel_Click" />
                             </StackPanel>
@@ -57,9 +56,9 @@
             </ListView.ItemTemplate>
         </ListView>
         <Button x:Name="btnBack" Content="Назад"  Height="44" Width="108" Background="#FF8BCEBD" FontSize="24" Foreground="#FF02354A" BorderBrush="#FF02354A" Margin="10,20,982,586" Click="btnBack_Click" />
-        <TextBox x:Name="tbSearch" HorizontalAlignment="Left" Margin="74,123,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="279" Height="42" FontSize="24"/>
+        <TextBox x:Name="tbSearch" HorizontalAlignment="Left" Margin="74,123,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="279" Height="42" FontSize="24" TextChanged="tbSearch_TextChanged"/>
         <Image HorizontalAlignment="Left" Height="50" Margin="10,119,0,0" VerticalAlignment="Top" Width="60" Source="/user/lupa.png"/>
-        <ComboBox x:Name="cbFilter" HorizontalAlignment="Left" Margin="452,136,0,0" VerticalAlignment="Top" Width="250" Height="42" BorderBrush="White">
+        <ComboBox x:Name="cbFilter" HorizontalAlignment="Left" Margin="452,136,0,0" VerticalAlignment="Top" Width="250" Height="42" BorderBrush="White" SelectionChanged="cbFilter_SelectionChanged">
             <ComboBox.Background>
                 <LinearGradientBrush EndPoint="0,1">
                     <GradientStop Color="#FFF0F0F0"/>
@@ -67,7 +66,7 @@
                 </LinearGradientBrush>
             </ComboBox.Background>
         </ComboBox>
-        <ComboBox x:Name="cbSort" HorizontalAlignment="Left" Margin="452,36,0,0" VerticalAlignment="Top"  Width="250" Height="42" BorderBrush="White">
+        <ComboBox x:Name="cbSort" HorizontalAlignment="Left" Margin="452,36,0,0" VerticalAlignment="Top"  Width="250" Height="42" BorderBrush="White" SelectionChanged="cbSort_SelectionChanged">
             <ComboBox.Background>
                 <LinearGradientBrush EndPoint="0,1">
                     <GradientStop Color="#FFF0F0F0"/>

@@ -27,15 +27,15 @@ namespace kind_farm.admin.products
         public adminPageProducts(users_table authUser)
         {
             InitializeComponent();
-            List<products_table> products = new List<products_table>();
-            listProduct.ItemsSource = AppConn.modeldb.products_table.ToList();
+            List<products_table> products = AppConn.modeldb.products_table.ToList();
+            listProduct.ItemsSource = products;
 
             cbSort.Items.Add("Сортировка");
             cbSort.Items.Add("По возрастанию цены");
             cbSort.Items.Add("По убыванию цены");
             cbSort.Items.Add("По названию от А-Я");
             cbSort.Items.Add("По названию от Я-А");
-            cbSort.SelectedIndex = 0;
+
             if (products.Count > 0)
             {
                 tbCounter.Text = "Найдено " + products.Count + " продуктов";
@@ -44,12 +44,12 @@ namespace kind_farm.admin.products
             {
                 tbCounter.Text = "Ничего не найдено";
             }
-            var productTypes = Entities.GetContext().type_product_table.Select(x => x.type_product).ToList();
 
+            var productTypes = Entities.GetContext().type_product_table.Select(x => x.type_product).ToList();
             productTypes.Insert(0, "Фильтрация");
             cbFilter.ItemsSource = productTypes;
             cbFilter.SelectedIndex = 0;
-
+            cbSort.SelectedIndex = 0;
             if (authUser != null)
             {
                 _authOrd = authUser;
@@ -61,7 +61,7 @@ namespace kind_farm.admin.products
         {
             if (MessageBox.Show("Вы точно хотите вернуться назад?", "Внимание", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
             {
-                AppFrame.frame.GoBack();
+                AppFrame.frame.Navigate(new adminPage());
             }
         }
 
@@ -75,7 +75,7 @@ namespace kind_farm.admin.products
             if (Visibility == Visibility.Visible)
             {
                 Entities.GetContext().ChangeTracker.Entries().ToList().ForEach(p => p.Reload());
-                listProduct.ItemsSource = Entities.GetContext().users_table.ToList();
+                listProduct.ItemsSource = Entities.GetContext().products_table.ToList();
             }
         }
 
@@ -89,37 +89,40 @@ namespace kind_farm.admin.products
                 products = products.Where(x => x.name_product_table.name_product.ToLower().Contains(tbSearch.Text.ToLower())).ToList();
             }
 
-            if (cbFilter.SelectedIndex >= 0)
+            if (cbFilter.SelectedIndex > 0)
             {
                 switch (cbFilter.SelectedIndex)
                 {
-                    case 0:
+                    case 1:
                         products = products.Where(x => x.id_type_product == 1).ToList();
                         break;
-                    case 1:
+                    case 2:
                         products = products.Where(x => x.id_type_product == 2).ToList();
                         break;
-                    case 2:
+                    case 3:
                         products = products.Where(x => x.id_type_product == 3).ToList();
+                        break;
+                    case 4:
+                        products = products.Where(x => x.id_type_product == 4).ToList();
                         break;
                 }
             }
 
 
-            if (cbSort.SelectedIndex >= 0)
+            if (cbSort.SelectedIndex > 0)
             {
                 switch (cbSort.SelectedIndex)
                 {
-                    case 0:
+                    case 1:
                         products = products.OrderBy(x => x.cost).ToList();
                         break;
-                    case 1:
+                    case 2:
                         products = products.OrderByDescending(x => x.cost).ToList();
                         break;
-                    case 2:
+                    case 3:
                         products = products.OrderBy(x => x.name_product_table.name_product).ToList();
                         break;
-                    case 3:
+                    case 4:
                         products = products.OrderByDescending(x => x.name_product_table.name_product).ToList();
                         break;
                 }
@@ -144,35 +147,52 @@ namespace kind_farm.admin.products
 
         private void cbFilter_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
             if (cbFilter.SelectedIndex == 0)
             {
-                findGoods();
+                List<products_table> products = AppConn.modeldb.products_table.ToList();
+                listProduct.ItemsSource = products;
+                if (products.Count > 0)
+                {
+                    tbCounter.Text = "Найдено " + products.Count + " продуктов";
+                }
+                else
+                {
+                    tbCounter.Text = "Ничего не найдено";
+                }
             }
             findGoods();
         }
 
         private void cbSort_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (cbFilter.SelectedIndex == 0)
+            if (cbSort.SelectedIndex == 0)
             {
-                findGoods();
+                List<products_table> products = AppConn.modeldb.products_table.ToList();
+                listProduct.ItemsSource = products;
+                if (products.Count > 0)
+                {
+                    tbCounter.Text = "Найдено " + products.Count + " продуктов";
+                }
+                else
+                {
+                    tbCounter.Text = "Ничего не найдено";
+                }
             }
             findGoods();
         }
 
         private void btnAddCart_Click(object sender, RoutedEventArgs e)
         {
-            
             try
             {
-                listProduct.ItemsSource = Entities.GetContext().products_table.ToList();
-                Button b = sender as Button;
-                int ID = int.Parse(((b.Parent as StackPanel).Children[0] as TextBlock).Text);
                 int idUsers = Convert.ToInt32(App.Current.Properties["idUser"].ToString());
+                Button b = sender as Button;
+                int ID = Convert.ToInt32(((b.Parent as StackPanel).Children[0] as TextBlock).Text);
+
+                var order = Entities.GetContext().orders_table.FirstOrDefault(o => o.id_user == idUsers);
 
                 int selectedGoodsId = ID;
-                var order = Entities.GetContext().orders_table.FirstOrDefault(o => o.id_user == idUsers);
+
                 if (order == null)
                 {
                     order = new orders_table()
@@ -184,33 +204,32 @@ namespace kind_farm.admin.products
                     Entities.GetContext().SaveChanges();
                 }
 
-                var cartnew = new cart_table()
+                var cartNew = new cart_table()
                 {
                     id_order = order.id_order,
                     id_product = selectedGoodsId
                 };
 
-                Entities.GetContext().cart_table.Add(cartnew);
+                Entities.GetContext().cart_table.Add(cartNew);
                 Entities.GetContext().SaveChanges();
-
 
                 MessageBox.Show("Продукт успешно добавлен в корзину!", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Information);
                 AppFrame.frame.Navigate(new cartPage());
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Произошла ошибка при добавлении продукта в корзину: " + ex.ToString(), "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Произошла ошибка при добавлении: " + ex.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
-        private void btnSingle_Click(object sender, RoutedEventArgs e)
+            private void btnSingle_Click(object sender, RoutedEventArgs e)
         {
             AppFrame.frame.Navigate(new singleProduct((sender as Button).DataContext as products_table));
         }
 
         private void btnEdit_Click(object sender, RoutedEventArgs e)
         {
-            AppFrame.frame.Navigate((sender as Button).DataContext as products_table);
+            AppFrame.frame.Navigate(new addEditProduct((sender as Button).DataContext as products_table));
         }
 
         private void btnDel_Click(object sender, RoutedEventArgs e)
@@ -220,7 +239,7 @@ namespace kind_farm.admin.products
             {
                 listProduct.ItemsSource = Entities.GetContext().products_table.ToList();
                 Button b = sender as Button;
-                int ID = int.Parse(((b.Parent as StackPanel).Children[0] as TextBlock).Text);
+                int ID = Convert.ToInt32(((b.Parent as StackPanel).Children[0] as TextBlock).Text);
                 Console.WriteLine(ID);
                 AppConn.modeldb.products_table.Remove(
                     AppConn.modeldb.products_table.Where(x => x.id_product == ID).First());
@@ -233,5 +252,6 @@ namespace kind_farm.admin.products
         {
             AppFrame.frame.Navigate(new addEditProduct(null));
         }
+
     }
 }

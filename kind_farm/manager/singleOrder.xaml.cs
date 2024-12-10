@@ -74,7 +74,7 @@ namespace kind_farm.manager
                     var StatusToUpdate = AppConn.modeldb.order_manager_table.FirstOrDefault(u => u.id_order == Id);
                     if (comboStatus.SelectedItem != null)
                     {
-                        StatusToUpdate.orders_table.id_order = Convert.ToInt32(comboStatus.SelectedIndex + 1);
+                        StatusToUpdate.orders_table.id_status = Convert.ToInt32(comboStatus.SelectedIndex + 1);
 
                         AppConn.modeldb.SaveChanges();
                         MessageBox.Show("Статус заказа успешно изменен!",

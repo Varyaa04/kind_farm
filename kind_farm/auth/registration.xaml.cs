@@ -25,12 +25,13 @@ namespace kind_farm.auth
         public registration()
         {
             InitializeComponent();
-            tbName.MaxLength = 50;
-            tbSurname.MaxLength = 50;
-            tbLogin.MaxLength = 50;
-            tbEmail.MaxLength = 100;
-            tbPhone.MaxLength = 16;
-            tbPass.MaxLength = 50;
+            tbName.MaxLength = 20;
+            tbSurname.MaxLength = 30;
+            tbLogin.MaxLength = 20;
+            tbEmail.MaxLength = 45;
+            tbPhone.MaxLength = 15;
+            tbPass.MaxLength = 25;
+            tbRep.MaxLength = 25;
             tbSurname.Focus();
         }
 

@@ -22,7 +22,7 @@
         <Label x:Name="lpass" Content="Пароль:" HorizontalAlignment="Left" Margin="621,265,0,0" VerticalAlignment="Top" FontSize="24"/>
         <TextBox x:Name="tbPass" HorizontalAlignment="Left" Text="{Binding password}" Margin="746,310,0,0" TextWrapping="Wrap" VerticalAlignment="Top"  Width="194" Height="36" FontSize="24" TextChanged="tbPass_TextChanged" KeyDown="tbPass_KeyDown"/>
         <Label x:Name="lpassrep" Content="Роль:" HorizontalAlignment="Left" Margin="621,346,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.382,0.404" FontSize="24"/>
-        <ComboBox x:Name="cbRole" HorizontalAlignment="Left" SelectedValue="{Binding id_role}" SelectedValuePath="id_role" ItemsSource="{Binding role_table}" DisplayMemberPath="role"   Margin="746,388,0,0" VerticalAlignment="Top"  Width="194" Height="36" FontSize="24" KeyDown="cbRole_KeyDown" />
+        <ComboBox x:Name="cbRole" HorizontalAlignment="Left" SelectedValue="{Binding users_table.id_role_user}" SelectedValuePath="role_table.id_role" ItemsSource="{Binding role_table}" DisplayMemberPath="role"   Margin="746,388,0,0" VerticalAlignment="Top"  Width="194" Height="36" FontSize="24" KeyDown="cbRole_KeyDown" />
         <Button x:Name="btnSave" Content="Сохранить" HorizontalAlignment="Center" Margin="0,512,0,0" VerticalAlignment="Top" Height="47" Width="260" Background="#FF8BCEBD" FontSize="24" Foreground="#FF02354A" BorderBrush="#FF02354A" Click="btnSave_Click"/>
         <Button x:Name="btnBack" Content="Назад" HorizontalAlignment="Left" Margin="10,26,0,0" VerticalAlignment="Top" Height="44" Width="108" Background="#FF8BCEBD" FontSize="24" Foreground="#FF02354A" BorderBrush="#FF02354A" Click="btnBack_Click"/>
 

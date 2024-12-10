@@ -29,5 +29,17 @@ namespace kind_farm
 
             AppFrame.frame.Navigate(new auth.authorization());
         }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            var dbContext = Entities.GetContext();
+
+            if (dbContext.cart_table.Any())
+            {
+                var allCartRecords = dbContext.cart_table.ToList();
+                dbContext.cart_table.RemoveRange(allCartRecords);
+                dbContext.SaveChanges();
+            }
+        }
     }
 }

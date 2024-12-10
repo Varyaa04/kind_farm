@@ -11,19 +11,19 @@
     <Grid>
         <Label x:Name="lb" Content="Регистрация" HorizontalAlignment="Center" Margin="0,41,0,0" VerticalAlignment="Top" FontSize="36"/>
         <Label x:Name="ls" Content="Введите фамилию:" HorizontalAlignment="Left" Margin="81,120,0,0" VerticalAlignment="Top" FontSize="24"/>
-        <TextBox x:Name="tbSurname" HorizontalAlignment="Left" Margin="221,162,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="194" Height="36" FontSize="24" KeyDown="tbSurname_KeyDown"/>
+        <TextBox x:Name="tbSurname" HorizontalAlignment="Left" Margin="221,162,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="298" Height="36" FontSize="24" KeyDown="tbSurname_KeyDown"/>
         <Label x:Name="ln" Content="Введите имя:" HorizontalAlignment="Left" Margin="81,218,0,0" VerticalAlignment="Top" FontSize="24"/>
-        <TextBox x:Name="tbName" HorizontalAlignment="Left"  Width="194" Height="36" Margin="221,260,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="24" KeyDown="tbName_KeyDown" />
+        <TextBox x:Name="tbName" HorizontalAlignment="Left"  Width="298" Height="36" Margin="221,260,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="24" KeyDown="tbName_KeyDown" />
         <Label x:Name="le" Content="Введите email:" HorizontalAlignment="Left" Margin="81,299,0,0" VerticalAlignment="Top" FontSize="24"/>
-        <TextBox x:Name="tbEmail" HorizontalAlignment="Left" Margin="221,341,0,0" TextWrapping="Wrap" VerticalAlignment="Top"  Width="194" Height="36" FontSize="24" KeyDown="tbEmail_KeyDown"/>
+        <TextBox x:Name="tbEmail" HorizontalAlignment="Left" Margin="221,341,0,0" TextWrapping="Wrap" VerticalAlignment="Top"  Width="298" Height="36" FontSize="24" KeyDown="tbEmail_KeyDown"/>
         <Label x:Name="lp" Content="Введите номер телефона:" HorizontalAlignment="Left" Margin="81,382,0,0" VerticalAlignment="Top" FontSize="24"/>
-        <TextBox x:Name="tbPhone" HorizontalAlignment="Left" Margin="221,429,0,0" TextWrapping="Wrap"  VerticalAlignment="Top"  Width="194" Height="36" FontSize="24" KeyDown="tbPhone_KeyDown" TextChanged="tbPhone_TextChanged"/>
+        <TextBox x:Name="tbPhone" HorizontalAlignment="Left" Margin="221,429,0,0" TextWrapping="Wrap"  VerticalAlignment="Top"  Width="298" Height="36" FontSize="24" KeyDown="tbPhone_KeyDown" TextChanged="tbPhone_TextChanged"/>
         <Label x:Name="ll" Content="Придумайет логин:" HorizontalAlignment="Left" Margin="621,161,0,0" VerticalAlignment="Top" FontSize="24"/>
-        <TextBox x:Name="tbLogin" HorizontalAlignment="Left" Margin="746,203,0,0" TextWrapping="Wrap" VerticalAlignment="Top"  Width="194" Height="36" FontSize="24" KeyDown="tbLogin_KeyDown"/>
+        <TextBox x:Name="tbLogin" HorizontalAlignment="Left" Margin="746,203,0,0" TextWrapping="Wrap" VerticalAlignment="Top"  Width="289" Height="36" FontSize="24" KeyDown="tbLogin_KeyDown"/>
         <Label x:Name="lpass" Content="Придумайте пароль:" HorizontalAlignment="Left" Margin="621,265,0,0" VerticalAlignment="Top" FontSize="24"/>
-        <TextBox x:Name="tbPass" HorizontalAlignment="Left" Margin="746,310,0,0" TextWrapping="Wrap" VerticalAlignment="Top"  Width="194" Height="36" FontSize="24" TextChanged="tbPass_TextChanged" KeyDown="tbPass_KeyDown"/>
+        <TextBox x:Name="tbPass" HorizontalAlignment="Left" Margin="746,310,0,0" TextWrapping="Wrap" VerticalAlignment="Top"  Width="289" Height="36" FontSize="24" TextChanged="tbPass_TextChanged" KeyDown="tbPass_KeyDown"/>
         <Label x:Name="lpassrep" Content="Повторите пароль:" HorizontalAlignment="Left" Margin="621,346,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.382,0.404" FontSize="24"/>
-        <PasswordBox x:Name="tbRep" HorizontalAlignment="Left" Margin="746,388,0,0" VerticalAlignment="Top"  Width="194" Height="36" FontSize="24" PasswordChanged="tbRep_PasswordChanged" KeyDown="tbRep_KeyDown"/>
+        <PasswordBox x:Name="tbRep" HorizontalAlignment="Left" Margin="746,388,0,0" VerticalAlignment="Top"  Width="289" Height="36" FontSize="24" PasswordChanged="tbRep_PasswordChanged" KeyDown="tbRep_KeyDown"/>
         <Button x:Name="btnReg" Content="Зарегистрироваться" HorizontalAlignment="Center" Margin="0,512,0,0" VerticalAlignment="Top" Height="47" Width="260" Background="#FF8BCEBD" FontSize="24" Foreground="#FF02354A" BorderBrush="#FF02354A" Click="btnReg_Click"/>
         <Button x:Name="btnBack" Content="Назад" HorizontalAlignment="Left" Margin="10,26,0,0" VerticalAlignment="Top" Height="44" Width="108" Background="#FF8BCEBD" FontSize="24" Foreground="#FF02354A" BorderBrush="#FF02354A" Click="btnBack_Click"/>
 

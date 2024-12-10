@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="4fdd8d97791c40feaed3793f4ab3f032" Name="Diagram1">
+      <Diagram DiagramId="52a5f54c541c48c1ae88d96a4e35ce46" Name="Diagram1">
         <EntityTypeShape EntityType="Model.allergens_table" Width="1.5" PointX="0.75" PointY="4" IsExpanded="true" />
         <EntityTypeShape EntityType="Model.cart_table" Width="1.5" PointX="5.25" PointY="3.75" IsExpanded="true" />
         <EntityTypeShape EntityType="Model.kind_product_table" Width="1.5" PointX="0.75" PointY="7.125" IsExpanded="true" />
@@ -14,6 +14,7 @@
         <EntityTypeShape EntityType="Model.products_table" Width="1.5" PointX="3" PointY="2.625" IsExpanded="true" />
         <EntityTypeShape EntityType="Model.role_table" Width="1.5" PointX="1.5" PointY="23.875" IsExpanded="true" />
         <EntityTypeShape EntityType="Model.status_table" Width="1.5" PointX="0.75" PointY="16.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.sysdiagrams" Width="1.5" PointX="5.75" PointY="7.125" IsExpanded="true" />
         <EntityTypeShape EntityType="Model.type_product_table" Width="1.5" PointX="0.75" PointY="11.75" IsExpanded="true" />
         <EntityTypeShape EntityType="Model.unit_table" Width="1.5" PointX="0.75" PointY="14.125" IsExpanded="true" />
         <EntityTypeShape EntityType="Model.users_table" Width="1.5" PointX="0.75" PointY="19.25" IsExpanded="true" />
