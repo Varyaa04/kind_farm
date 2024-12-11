@@ -24,7 +24,7 @@
                         <Image Source="{Binding currentPhoto}" Grid.ColumnSpan="2" Margin="0,0,446,-34"/>
                         <StackPanel Grid.Column="1" Margin="10,30,0,-3">
                             <TextBlock Height="37" TextAlignment="Center" FontSize="24" FontFamily="Microsoft JhengHei UI">
-                                <Run Text="{Binding name_product_table.name_product}"/>
+                                <Run Text="{Binding name_product}"/>
                             </TextBlock>
                             <TextBlock  Height="37" TextAlignment="Center" FontSize="16" FontFamily="Microsoft JhengHei UI">
                                 <Run Text="{Binding kind_product_table.kind_product}"/>

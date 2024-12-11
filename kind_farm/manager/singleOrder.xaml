@@ -29,7 +29,7 @@
                             <TextBlock Width="387" TextWrapping="Wrap" Height="98" FontFamily="Verdana" FontSize="14" >
                                 <Run Text="Наименование:" />
                                 <Run Text=" "/>
-                                <Run Text="{Binding name_product_table.name_product}" TextBlock.FontFamily="Verdana" TextBlock.FontSize="14" />
+                                <Run Text="{Binding name_product}" TextBlock.FontFamily="Verdana" TextBlock.FontSize="14" />
                                 <Run Text=" "/>
                                 <Run Text="{Binding kind_product_table.kind_product}"/>
                             </TextBlock>
@@ -53,7 +53,7 @@
         <Label Content="Имя пользователя:" HorizontalAlignment="Left" Margin="788,270,0,0" VerticalAlignment="Top" Panel.ZIndex="1" FontSize="16" FontFamily="Verdana"/>
         <Label x:Name="labelPhone" Content="" HorizontalAlignment="Left" Margin="866,403,0,0" VerticalAlignment="Top" Height="39" Width="185" Background="{x:Null}" Panel.ZIndex="1" FontSize="16" FontFamily="Verdana"/>
         <Label Content="Номер телефона:" HorizontalAlignment="Left" Margin="788,352,0,0" VerticalAlignment="Top" Panel.ZIndex="1" FontSize="16" FontFamily="Verdana"/>
-        <Label x:Name="labelEmai" Content="" HorizontalAlignment="Left" Margin="838,492,0,0" VerticalAlignment="Top" Height="38" Width="213" Background="{x:Null}" Panel.ZIndex="1" FontSize="16" FontFamily="Verdana"/>
+        <Label x:Name="labelEmai" Content="" HorizontalAlignment="Left" Margin="838,468,0,0" VerticalAlignment="Top" Height="38" Width="213" Background="{x:Null}" Panel.ZIndex="1" FontSize="16" FontFamily="Verdana"/>
         <Label Content="Emai:" Name="emailTxt" HorizontalAlignment="Left" Margin="788,434,0,0" VerticalAlignment="Top" Panel.ZIndex="1" FontSize="16" FontFamily="Verdana"/>
         <Label x:Name="labelAbout" Content="Данные пользователя" HorizontalAlignment="Left" Margin="760,193,0,0" VerticalAlignment="Top" Width="265" FontFamily="Verdana" FontSize="16"/>
         <Border BorderBrush="Black" BorderThickness="1" Margin="760,227,10,29"/>

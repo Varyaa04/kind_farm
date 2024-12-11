@@ -10,7 +10,7 @@
 
     <Grid>
         <Label x:Name="ls" Content="Выберите наименование:" HorizontalAlignment="Left" Margin="81,120,0,0" VerticalAlignment="Top" FontSize="24"/>
-        <ComboBox x:Name="cbName" SelectedValue="{Binding products_table.id_name_product}" SelectedValuePath="name_product_table.name_product" ItemsSource="{Binding name_product_table}" DisplayMemberPath="name_product" HorizontalAlignment="Left" Margin="221,162,0,0" VerticalAlignment="Top" Width="194" Height="36" FontSize="24" KeyDown="cbName_KeyDown"/>
+        <TextBox x:Name="cbName" HorizontalAlignment="Left" Margin="221,162,0,0" VerticalAlignment="Top" Width="194" Height="36" FontSize="24" KeyDown="cbName_KeyDown"/>
         <Label x:Name="ln" Content="Выберите тип:" HorizontalAlignment="Left" Margin="81,218,0,0" VerticalAlignment="Top" FontSize="24"/>
         <ComboBox x:Name="cbType" HorizontalAlignment="Left"  SelectedValue="{Binding products_table.id_type_product}" SelectedValuePath="type_product_table.type_product" ItemsSource="{Binding type_product_table}" DisplayMemberPath="type_product" Width="194" Height="36" Margin="221,260,0,0" VerticalAlignment="Top" FontSize="24" KeyDown="cbType_KeyDown" />
         <Label x:Name="le" Content="Выберите вид:" HorizontalAlignment="Left" Margin="81,299,0,0" VerticalAlignment="Top" FontSize="24"/>

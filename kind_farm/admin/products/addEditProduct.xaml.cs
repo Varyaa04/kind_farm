@@ -35,7 +35,6 @@ namespace kind_farm.admin.products
             }
             DataContext = _currentProduct;
 
-            cbName.ItemsSource = Entities.GetContext().name_product_table.ToList();
             cbType.ItemsSource = Entities.GetContext().type_product_table.ToList();
             cbKind.ItemsSource = Entities.GetContext().kind_product_table.ToList();
             cbUnit.ItemsSource = Entities.GetContext().unit_table.ToList();
@@ -70,7 +69,7 @@ namespace kind_farm.admin.products
             {
                 products_table product_new = new products_table()
                 {
-                  id_name_product = cbName.SelectedIndex + 1,
+                  name_product = cbName.Text,
                   id_type_product = cbType.SelectedIndex + 1,
                   id_kind_product = cbKind.SelectedIndex + 1,
                   weight = Convert.ToInt32(tbweight.Text),
@@ -103,7 +102,7 @@ namespace kind_farm.admin.products
 
                 if (productToUpdate != null)
                 {
-                    productToUpdate.id_name_product = Convert.ToInt32(cbName.SelectedIndex + 1);
+                    productToUpdate.name_product = cbName.Text;
                     productToUpdate.id_type_product = Convert.ToInt32(cbType.SelectedIndex + 1);
                     productToUpdate.id_kind_product = Convert.ToInt32(cbKind.SelectedIndex + 1);
                     productToUpdate.weight = Convert.ToInt32(tbweight.Text);
@@ -148,8 +147,8 @@ namespace kind_farm.admin.products
                 errors.AppendLine("Цена продукта не может быть равен 0.");
             if (string.IsNullOrEmpty(tbCost.Text))
                 errors.AppendLine("Введите цену.");
-            if (cbName.SelectedIndex == -1)
-                errors.AppendLine("Выберите наименование.");
+            if (string.IsNullOrEmpty(tbweight.Text))
+                errors.AppendLine("Введите наименование.");
             if (cbType.SelectedIndex == -1)
                 errors.AppendLine("Выберите тип продукта.");
             if (cbKind.SelectedIndex == -1)

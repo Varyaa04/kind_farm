@@ -105,6 +105,12 @@ namespace kind_farm.admin.products
                     case 4:
                         products = products.Where(x => x.id_type_product == 4).ToList();
                         break;
+                    case 5:
+                        products = products.Where(x => x.id_type_product == 5).ToList();
+                        break;
+                    case 6:
+                        products = products.Where(x => x.id_type_product == 6).ToList();
+                        break;
                 }
             }
 
