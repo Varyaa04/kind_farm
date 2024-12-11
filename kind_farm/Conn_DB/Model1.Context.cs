@@ -15,17 +15,12 @@ namespace kind_farm.Conn_DB
     using System.Data.Entity.Core.Objects;
     using System.Linq;
     
-    public partial class Entities: DbContext
+    public partial class Entities : DbContext
     {
-        private static Entities _context;  
+        public static Entities _context;
         public Entities()
             : base("name=Entities")
         {
-        }
-    
-        protected override void OnModelCreating(DbModelBuilder modelBuilder)
-        {
-            throw new UnintentionalCodeFirstException();
         }
 
         public static Entities GetContext()
@@ -34,10 +29,15 @@ namespace kind_farm.Conn_DB
                 _context = new Entities();
             return _context;
         }
+    
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            throw new UnintentionalCodeFirstException();
+        }
+    
         public virtual DbSet<allergens_table> allergens_table { get; set; }
         public virtual DbSet<cart_table> cart_table { get; set; }
         public virtual DbSet<kind_product_table> kind_product_table { get; set; }
-        public virtual DbSet<name_product_table> name_product_table { get; set; }
         public virtual DbSet<order_manager_table> order_manager_table { get; set; }
         public virtual DbSet<orders_table> orders_table { get; set; }
         public virtual DbSet<products_table> products_table { get; set; }

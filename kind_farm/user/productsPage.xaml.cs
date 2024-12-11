@@ -102,7 +102,7 @@ namespace kind_farm.user
 
             if (tbSearch != null)
             {
-                products = products.Where(x => x.name_product_table.name_product.ToLower().Contains(tbSearch.Text.ToLower())).ToList();
+                products = products.Where(x => x.name_product.ToLower().Contains(tbSearch.Text.ToLower())).ToList();
             }
 
             if (cbFilter.SelectedIndex > 0)
@@ -142,10 +142,10 @@ namespace kind_farm.user
                         products = products.OrderByDescending(x => x.cost).ToList();
                         break;
                     case 3:
-                        products = products.OrderBy(x => x.name_product_table.name_product).ToList();
+                        products = products.OrderBy(x => x.name_product).ToList();
                         break;
                     case 4:
-                        products = products.OrderByDescending(x => x.name_product_table.name_product).ToList();
+                        products = products.OrderByDescending(x => x.name_product).ToList();
                         break;
                 }
             }

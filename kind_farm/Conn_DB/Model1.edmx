@@ -27,13 +27,6 @@
           <Property Name="id_kind_product" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="kind_product" Type="nvarchar(max)" Nullable="false" />
         </EntityType>
-        <EntityType Name="name_product_table">
-          <Key>
-            <PropertyRef Name="id_name_product" />
-          </Key>
-          <Property Name="id_name_product" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="name_product" Type="nvarchar(max)" Nullable="false" />
-        </EntityType>
         <EntityType Name="order_manager_table">
           <Key>
             <PropertyRef Name="id_order_manager" />
@@ -55,7 +48,7 @@
             <PropertyRef Name="id_product" />
           </Key>
           <Property Name="id_product" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="id_name_product" Type="int" Nullable="false" />
+          <Property Name="name_product" Type="nvarchar(max)" Nullable="false" />
           <Property Name="id_type_product" Type="int" Nullable="false" />
           <Property Name="id_kind_product" Type="int" Nullable="false" />
           <Property Name="weight" Type="float" Nullable="false" />
@@ -228,20 +221,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_products_table_name_product_table">
-          <End Role="name_product_table" Type="Self.name_product_table" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="products_table" Type="Self.products_table" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="name_product_table">
-              <PropertyRef Name="id_name_product" />
-            </Principal>
-            <Dependent Role="products_table">
-              <PropertyRef Name="id_name_product" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_products_table_type_product_table">
           <End Role="type_product_table" Type="Self.type_product_table" Multiplicity="1">
             <OnDelete Action="Cascade" />
@@ -319,7 +298,6 @@
           <EntitySet Name="allergens_table" EntityType="Self.allergens_table" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="cart_table" EntityType="Self.cart_table" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="kind_product_table" EntityType="Self.kind_product_table" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="name_product_table" EntityType="Self.name_product_table" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="order_manager_table" EntityType="Self.order_manager_table" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="orders_table" EntityType="Self.orders_table" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="products_table" EntityType="Self.products_table" Schema="dbo" store:Type="Tables" />
@@ -359,10 +337,6 @@
           </AssociationSet>
           <AssociationSet Name="FK_products_table_kind_product_table" Association="Self.FK_products_table_kind_product_table">
             <End Role="kind_product_table" EntitySet="kind_product_table" />
-            <End Role="products_table" EntitySet="products_table" />
-          </AssociationSet>
-          <AssociationSet Name="FK_products_table_name_product_table" Association="Self.FK_products_table_name_product_table">
-            <End Role="name_product_table" EntitySet="name_product_table" />
             <End Role="products_table" EntitySet="products_table" />
           </AssociationSet>
           <AssociationSet Name="FK_products_table_type_product_table" Association="Self.FK_products_table_type_product_table">
@@ -409,14 +383,6 @@
           <Property Name="kind_product" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="products_table" Relationship="Self.FK_products_table_kind_product_table" FromRole="kind_product_table" ToRole="products_table" />
         </EntityType>
-        <EntityType Name="name_product_table">
-          <Key>
-            <PropertyRef Name="id_name_product" />
-          </Key>
-          <Property Name="id_name_product" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="name_product" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="products_table" Relationship="Self.FK_products_table_name_product_table" FromRole="name_product_table" ToRole="products_table" />
-        </EntityType>
         <EntityType Name="order_manager_table">
           <Key>
             <PropertyRef Name="id_order_manager" />
@@ -444,7 +410,7 @@
             <PropertyRef Name="id_product" />
           </Key>
           <Property Name="id_product" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="id_name_product" Type="Int32" Nullable="false" />
+          <Property Name="name_product" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="id_type_product" Type="Int32" Nullable="false" />
           <Property Name="id_kind_product" Type="Int32" Nullable="false" />
           <Property Name="weight" Type="Double" Nullable="false" />
@@ -456,7 +422,6 @@
           <NavigationProperty Name="allergens_table" Relationship="Self.FK_products_table_allergens_table" FromRole="products_table" ToRole="allergens_table" />
           <NavigationProperty Name="cart_table" Relationship="Self.FK_cart_table_products_table" FromRole="products_table" ToRole="cart_table" />
           <NavigationProperty Name="kind_product_table" Relationship="Self.FK_products_table_kind_product_table" FromRole="products_table" ToRole="kind_product_table" />
-          <NavigationProperty Name="name_product_table" Relationship="Self.FK_products_table_name_product_table" FromRole="products_table" ToRole="name_product_table" />
           <NavigationProperty Name="order_manager_table" Relationship="Self.FK_order_manager_table_products_table" FromRole="products_table" ToRole="order_manager_table" />
           <NavigationProperty Name="type_product_table" Relationship="Self.FK_products_table_type_product_table" FromRole="products_table" ToRole="type_product_table" />
           <NavigationProperty Name="unit_table" Relationship="Self.FK_products_table_unit_table" FromRole="products_table" ToRole="unit_table" />
@@ -574,20 +539,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_products_table_name_product_table">
-          <End Role="name_product_table" Type="Self.name_product_table" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="products_table" Type="Self.products_table" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="name_product_table">
-              <PropertyRef Name="id_name_product" />
-            </Principal>
-            <Dependent Role="products_table">
-              <PropertyRef Name="id_name_product" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_order_manager_table_orders_table">
           <End Role="orders_table" Type="Self.orders_table" Multiplicity="1">
             <OnDelete Action="Cascade" />
@@ -686,11 +637,10 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="Entities1" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="allergens_table" EntityType="Self.allergens_table" />
           <EntitySet Name="cart_table" EntityType="Self.cart_table" />
           <EntitySet Name="kind_product_table" EntityType="Self.kind_product_table" />
-          <EntitySet Name="name_product_table" EntityType="Self.name_product_table" />
           <EntitySet Name="order_manager_table" EntityType="Self.order_manager_table" />
           <EntitySet Name="orders_table" EntityType="Self.orders_table" />
           <EntitySet Name="products_table" EntityType="Self.products_table" />
@@ -714,10 +664,6 @@
           </AssociationSet>
           <AssociationSet Name="FK_products_table_kind_product_table" Association="Self.FK_products_table_kind_product_table">
             <End Role="kind_product_table" EntitySet="kind_product_table" />
-            <End Role="products_table" EntitySet="products_table" />
-          </AssociationSet>
-          <AssociationSet Name="FK_products_table_name_product_table" Association="Self.FK_products_table_name_product_table">
-            <End Role="name_product_table" EntitySet="name_product_table" />
             <End Role="products_table" EntitySet="products_table" />
           </AssociationSet>
           <AssociationSet Name="FK_order_manager_table_orders_table" Association="Self.FK_order_manager_table_orders_table">
@@ -795,7 +741,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="Хранилище ModelContainer" CdmEntityContainer="Entities1">
+        <EntityContainerMapping StorageEntityContainer="Хранилище ModelContainer" CdmEntityContainer="Entities">
           <EntitySetMapping Name="allergens_table">
             <EntityTypeMapping TypeName="Model.allergens_table">
               <MappingFragment StoreEntitySet="allergens_table">
@@ -821,14 +767,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="name_product_table">
-            <EntityTypeMapping TypeName="Model.name_product_table">
-              <MappingFragment StoreEntitySet="name_product_table">
-                <ScalarProperty Name="id_name_product" ColumnName="id_name_product" />
-                <ScalarProperty Name="name_product" ColumnName="name_product" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="order_manager_table">
             <EntityTypeMapping TypeName="Model.order_manager_table">
               <MappingFragment StoreEntitySet="order_manager_table">
@@ -851,7 +789,7 @@
             <EntityTypeMapping TypeName="Model.products_table">
               <MappingFragment StoreEntitySet="products_table">
                 <ScalarProperty Name="id_product" ColumnName="id_product" />
-                <ScalarProperty Name="id_name_product" ColumnName="id_name_product" />
+                <ScalarProperty Name="name_product" ColumnName="name_product" />
                 <ScalarProperty Name="id_type_product" ColumnName="id_type_product" />
                 <ScalarProperty Name="id_kind_product" ColumnName="id_kind_product" />
                 <ScalarProperty Name="weight" ColumnName="weight" />

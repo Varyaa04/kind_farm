@@ -22,7 +22,7 @@ namespace kind_farm.Conn_DB
         }
     
         public int id_product { get; set; }
-        public int id_name_product { get; set; }
+        public string name_product { get; set; }
         public int id_type_product { get; set; }
         public int id_kind_product { get; set; }
         public double weight { get; set; }
@@ -31,6 +31,7 @@ namespace kind_farm.Conn_DB
         public string picture { get; set; }
         public string description { get; set; }
         public Nullable<int> id_allergens { get; set; }
+
         public string currentPhoto
         {
             get
@@ -45,11 +46,11 @@ namespace kind_farm.Conn_DB
                 }
             }
         }
+
         public virtual allergens_table allergens_table { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<cart_table> cart_table { get; set; }
         public virtual kind_product_table kind_product_table { get; set; }
-        public virtual name_product_table name_product_table { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<order_manager_table> order_manager_table { get; set; }
         public virtual type_product_table type_product_table { get; set; }

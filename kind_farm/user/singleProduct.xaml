@@ -14,7 +14,7 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
         <TextBlock x:Name="labelGoods" HorizontalAlignment="Center" Margin="0,30,0,0" VerticalAlignment="Top" Height="45" Width="620" FontFamily="Verdana" FontSize="26">
-            <Run Text="{Binding name_product_table.name_product}"/>
+            <Run Text="{Binding name_product}"/>
             <Run Text=" "/>
             <Run Text="{Binding kind_product_table.nkind_product}"/>
         </TextBlock>

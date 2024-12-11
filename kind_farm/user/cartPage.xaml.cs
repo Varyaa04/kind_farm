@@ -162,7 +162,7 @@ namespace kind_farm.user
                 try
                 {
                     addManager();
-                    MessageBox.Show("Спасибо за Ваш заказ! В ближайшее время мы с Вами свяжемся! PDF документ был успешно загружен!", "Информация", MessageBoxButton.OK, MessageBoxImage.Information);
+                    MessageBox.Show("Спасибо за Ваш заказ! В ближайшее время мы с Вами свяжемся!", "Информация", MessageBoxButton.OK, MessageBoxImage.Information);
                     RemoveItemsFromCart();
                     int us = Convert.ToInt32(App.Current.Properties["idRole"].ToString());
                     if (us == 1)

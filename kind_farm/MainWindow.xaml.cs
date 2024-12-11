@@ -34,11 +34,18 @@ namespace kind_farm
         {
             var dbContext = Entities.GetContext();
 
-            if (dbContext.cart_table.Any())
+            try
             {
-                var allCartRecords = dbContext.cart_table.ToList();
-                dbContext.cart_table.RemoveRange(allCartRecords);
-                dbContext.SaveChanges();
+                if (dbContext.cart_table.Any())
+                {
+                    var allCartRecords = dbContext.cart_table.ToList();
+                    dbContext.cart_table.RemoveRange(allCartRecords);
+                    dbContext.SaveChanges();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Произошла ошибка: " + ex, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
     }
