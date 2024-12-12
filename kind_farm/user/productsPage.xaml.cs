@@ -25,10 +25,7 @@ namespace kind_farm.user
     /// </summary>
     public partial class productsPage : Page
     {
-
-        users_table _authOrd = new users_table();
-        private orders_table order = new orders_table();
-        public productsPage(users_table authUser)
+        public productsPage()
         {
             InitializeComponent();
             List<products_table> products = AppConn.modeldb.products_table.ToList();
@@ -54,11 +51,6 @@ namespace kind_farm.user
             cbFilter.ItemsSource = productTypes;
             cbFilter.SelectedIndex = 0;
             cbSort.SelectedIndex = 0;
-            if (authUser != null)
-            {
-                _authOrd = authUser;
-            }
-            DataContext = _authOrd;
         }
 
         private void btnBack_Click(object sender, RoutedEventArgs e)

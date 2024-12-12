@@ -38,9 +38,14 @@ namespace kind_farm.auth
 
         private void btnAuth_Click(object sender, RoutedEventArgs e)
         {
+            Auth(tbLog.Text, tpPass.Password);
+        }
+
+        public bool Auth(string loginTXT, string passwordTXT)
+        {
             try
             {
-                var userobj = AppConn.modeldb.users_table.FirstOrDefault(x => x.login == tbLog.Text && x.password == tpPass.Password);
+                var userobj = AppConn.modeldb.users_table.FirstOrDefault(x => x.login ==loginTXT && x.password == passwordTXT);
 
                 if (userobj != null)
                 {
@@ -64,7 +69,7 @@ namespace kind_farm.auth
                                 MessageBox.Show("Здравствуйте, " + userobj.surname + " " + userobj.name + "!", "Добро пожаловать!", MessageBoxButton.OK, MessageBoxImage.Information);
                                 App.Current.Properties["idUser"] = userobj.id_user;
                                 App.Current.Properties["idRole"] = userobj.id_role_user;
-                                AppFrame.frame.Navigate(new user.productsPage((sender as Button).DataContext as users_table));
+                                AppFrame.frame.Navigate(new user.productsPage());
                                 break;
                         }
                     }
@@ -83,8 +88,8 @@ namespace kind_farm.auth
             {
                 MessageBox.Show("Произошла ошибка: " + ex, "Ошибка!", MessageBoxButton.OK, MessageBoxImage.Error);
             }
+            return true;
         }
-
         private void Grid_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Tab || e.Key == Key.Enter)

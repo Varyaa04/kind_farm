@@ -41,7 +41,7 @@ namespace kind_farm.admin.users
             tbSurname.MaxLength = 50;
             tbLogin.MaxLength = 50;
             tbEmail.MaxLength = 100;
-            tbPhone.MaxLength = 16;
+            tbPhone.MaxLength = 12;
             tbPass.MaxLength = 50;
             tbSurname.Focus();
         }
@@ -137,17 +137,28 @@ namespace kind_farm.admin.users
             try
             {
                 int userId = _currentUser.id_user;
+                int idUsers = Convert.ToInt32(App.Current.Properties["idUser"].ToString());
                 var userToUpdate = AppConn.modeldb.users_table.FirstOrDefault(u => u.id_user == userId);
 
                 if (userToUpdate != null)
                 {
+                    int currentRoleId = userToUpdate.id_role_user;
+
                     userToUpdate.login = tbLogin.Text;
                     userToUpdate.password = tbPass.Text;
                     userToUpdate.email = tbEmail.Text;
                     userToUpdate.phone = tbPhone.Text;
                     userToUpdate.name = tbName.Text;
                     userToUpdate.surname = tbSurname.Text;
-                    userToUpdate.id_role_user = cbRole.SelectedIndex + 1;
+
+                    int newRoleId = cbRole.SelectedIndex + 1;
+                    if (newRoleId != currentRoleId && idUsers == userId)
+                    {
+                        ShowError("Вы не можете изменить свою роль!");
+                        return; 
+                    }
+
+                    userToUpdate.id_role_user = newRoleId;
 
                     AppConn.modeldb.SaveChanges();
                     MessageBox.Show("Данные пользователя успешно изменены!", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Information);

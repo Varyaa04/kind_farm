@@ -35,10 +35,10 @@ namespace kind_farm.admin.products
             }
             DataContext = _currentProduct;
 
-            cbType.ItemsSource = Entities.GetContext().type_product_table.ToList();
-            cbKind.ItemsSource = Entities.GetContext().kind_product_table.ToList();
-            cbUnit.ItemsSource = Entities.GetContext().unit_table.ToList();
-            cbAller.ItemsSource = Entities.GetContext().allergens_table.ToList();
+            cbType.ItemsSource = Entities.GetContext().type_product_table.ToArray();
+            cbKind.ItemsSource = Entities.GetContext().kind_product_table.ToArray();
+            cbUnit.ItemsSource = Entities.GetContext().unit_table.ToArray();
+            cbAller.ItemsSource = Entities.GetContext().allergens_table.ToArray();
 
             tbweight.MaxLength = 2;
             tbCost.MaxLength = 5;
@@ -51,49 +51,67 @@ namespace kind_farm.admin.products
         }
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
-            if (_currentProduct.id_product == 0)
-            {
-                AddProduct();
-            }
-            else
-            {
-                EditProduct();
-            }
+            //try
+            //{
+                if (_currentProduct.id_product == 0)
+                {
+                    if (AppConn.modeldb.products_table.Any(x => x.name_product == cbName.Text))
+                    {
+                        MessageBox.Show("Продукт с таким наименованием уже существует!", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Error);
+                        return;
+                    }
+                    else
+                    {
+                        AddProduct(cbName.Text, cbType.SelectedIndex + 1, cbKind.SelectedIndex + 1,Convert.ToInt32(tbweight.Text),
+                            cbUnit.SelectedIndex + 1, Convert.ToInt32(tbCost.Text), tbDesc.Text, cbAller.SelectedIndex + 1);
+                    }
+                }
+                else
+                {
+                    EditProduct();
+                }
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show("Произошла ошибка: " + ex, "Ошибка!", MessageBoxButton.OK, MessageBoxImage.Error);
+            //}
+
         }
 
-        private void AddProduct()
+        public bool AddProduct(string name, int type, int kind, int weight,int unit,  int cost, string desc, int aller)
         {
-            if (!ValidateFields()) return;
+            if (!ValidateFields()) return true;
 
             try
             {
-                products_table product_new = new products_table()
-                {
-                  name_product = cbName.Text,
-                  id_type_product = cbType.SelectedIndex + 1,
-                  id_kind_product = cbKind.SelectedIndex + 1,
-                  weight = Convert.ToInt32(tbweight.Text),
-                  id_unit = cbUnit.SelectedIndex + 1,
-                  cost = Convert.ToInt32(tbCost.Text),
-                  picture = null,
-                  description = tbDesc.Text,
-                  id_allergens = Convert.ToInt32(cbAller.SelectedIndex + 1)
-                };
-                AppConn.modeldb.products_table.Add(product_new);
-                AppConn.modeldb.SaveChanges();
-                MessageBox.Show("Продукт успешно добавлен!", "Уведомление!", MessageBoxButton.OK, MessageBoxImage.Information);
-                AppFrame.frame.GoBack();
+                    products_table product_new = new products_table()
+                    {
+                        name_product = name,
+                        id_type_product = type,
+                        id_kind_product = kind,
+                        weight =weight,
+                        id_unit =unit,
+                        cost = cost,
+                        picture = null,
+                        description = desc,
+                        id_allergens =aller
+                    };
+                    AppConn.modeldb.products_table.Add(product_new);
+                    AppConn.modeldb.SaveChanges();
+                    MessageBox.Show("Продукт успешно добавлен!", "Уведомление!", MessageBoxButton.OK, MessageBoxImage.Information);
+                    AppFrame.frame.GoBack();
+                
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Произошла ошибка: " + ex, "Ошибка!", MessageBoxButton.OK, MessageBoxImage.Error);
             }
-
+            return true;
         }
 
         private void EditProduct()
         {
-            if (!ValidateFields()) return;
+            if (!ValidateFields()) return ;
 
             try
             {
@@ -120,14 +138,15 @@ namespace kind_farm.admin.products
                 {
                     ShowError("Продукт не найден!");
                 }
-            }
+        }
             catch (Exception ex)
             {
                 MessageBox.Show("Ошибка: " + ex.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                throw ex;
             }
 
 
-        }
+}
 
         private void ShowError(string message)
         {
@@ -138,16 +157,27 @@ namespace kind_farm.admin.products
         private bool ValidateFields()
         {
             StringBuilder errors = new StringBuilder();
+            //if(Convert.ToInt32(tbCost.Text) < 0) errors.AppendLine("Введите цену.");
+            Console.WriteLine($"'{tbCost.Text}'");
+            Console.WriteLine($"'{string.IsNullOrEmpty(tbCost.Text)}'");
 
+            if (string.IsNullOrEmpty(tbCost.Text) || string.IsNullOrWhiteSpace(tbCost.Text))
+                errors.AppendLine("Введите цену продукта.");
+            if (errors.Length > 0)
+            {
+                ShowError(errors.ToString());
+                return false;
+            }
             if (string.IsNullOrEmpty(tbweight.Text))
                 errors.AppendLine("Введите вес продукта.");
-            if (Convert.ToInt32(tbweight.Text) == 0)
+             if (Convert.ToInt32(tbweight.Text) == 0)
                 errors.AppendLine("Вес продукта не может быть равен 0.");
+
             if (Convert.ToInt32(tbCost.Text) == 0)
                 errors.AppendLine("Цена продукта не может быть равен 0.");
-            if (string.IsNullOrEmpty(tbCost.Text))
-                errors.AppendLine("Введите цену.");
-            if (string.IsNullOrEmpty(tbweight.Text))
+            if (Convert.ToInt32(tbCost.Text) > 0 && Convert.ToInt32(tbCost.Text) < 50)
+                errors.AppendLine("Цена продукта не может быть меньше 50.");
+            if (string.IsNullOrEmpty(cbName.Text) || string.IsNullOrWhiteSpace(cbName.Text))
                 errors.AppendLine("Введите наименование.");
             if (cbType.SelectedIndex == -1)
                 errors.AppendLine("Выберите тип продукта.");
@@ -155,8 +185,6 @@ namespace kind_farm.admin.products
                 errors.AppendLine("Выберите вид продукта.");
             if (cbUnit.SelectedIndex == -1)
                 errors.AppendLine("Выберите единицу измерения.");
-
-
             if (errors.Length > 0)
             {
                 ShowError(errors.ToString());
@@ -241,5 +269,14 @@ namespace kind_farm.admin.products
         {
 
         }
+
+        private void tbCost_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (tbCost.Text == null || tbCost.Text == " " )
+            {
+                tbCost.Text = "0";
+            }
+            }
+
+        }
     }
-}

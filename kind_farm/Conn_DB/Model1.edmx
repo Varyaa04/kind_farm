@@ -637,7 +637,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="Entities1" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="allergens_table" EntityType="Self.allergens_table" />
           <EntitySet Name="cart_table" EntityType="Self.cart_table" />
           <EntitySet Name="kind_product_table" EntityType="Self.kind_product_table" />
@@ -741,7 +741,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="Хранилище ModelContainer" CdmEntityContainer="Entities">
+        <EntityContainerMapping StorageEntityContainer="Хранилище ModelContainer" CdmEntityContainer="Entities1">
           <EntitySetMapping Name="allergens_table">
             <EntityTypeMapping TypeName="Model.allergens_table">
               <MappingFragment StoreEntitySet="allergens_table">

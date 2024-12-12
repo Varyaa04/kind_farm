@@ -17,6 +17,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Xml.Linq;
 
+
 namespace kind_farm.user
 {
     /// <summary>
@@ -68,11 +69,11 @@ namespace kind_farm.user
             }
             else if (us == 2)
             {
-                AppFrame.frame.Navigate(new productsPage((sender as Button).DataContext as users_table));
+                AppFrame.frame.Navigate(new productsPage());
             }
             else if (us == 3)
             {
-                AppFrame.frame.Navigate(new productsPage((sender as Button).DataContext as users_table));
+                AppFrame.frame.Navigate(new productsPage());
             }
         }
 
@@ -171,11 +172,11 @@ namespace kind_farm.user
                     }
                     else if (us == 2)
                     {
-                        AppFrame.frame.Navigate(new productsPage((sender as Button).DataContext as users_table));
+                        AppFrame.frame.Navigate(new productsPage());
                     }
                     else if (us == 3)
                     {
-                        AppFrame.frame.Navigate(new productsPage((sender as Button).DataContext as users_table));
+                        AppFrame.frame.Navigate(new productsPage());
                     }
                 }
                 catch (Exception ex)

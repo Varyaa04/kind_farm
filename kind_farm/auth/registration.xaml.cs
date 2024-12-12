@@ -42,28 +42,35 @@ namespace kind_farm.auth
 
         private void btnReg_Click(object sender, RoutedEventArgs e)
         {
-            if(AppConn.modeldb.users_table.Any(x => x.email == tbEmail.Text && x.login == tbLogin.Text))
+            if (AppConn.modeldb.users_table.Any(x => x.email == tbEmail.Text && x.login == tbLogin.Text))
             {
                 MessageBox.Show("Пользователь с таким логином и email'ом уже существует!", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Error);
-                return;
+                return ;
             }
             else
             {
+                Register(tbSurname.Text, tbName.Text, tbLogin.Text, tbPass.Text, tbEmail.Text, tbPhone.Text, 3);
+            }
+        }
+
+        public bool Register(string surname, string name, string login, string password, string email, string phone, int role)
+        {
+            
                 string emailPattern = @"^[^@\s]+@[^@\s]+\.[^@\s]+$";
 
                 if (!Regex.IsMatch(tbEmail.Text, emailPattern))
                 {
                     MessageBox.Show("Введите корректный email!",
                         "Уведомление", MessageBoxButton.OK, MessageBoxImage.Error);
-                    return;
+                    return true;
                 }
 
-                if ((string.IsNullOrEmpty(tbSurname.Text) || string.IsNullOrWhiteSpace(tbSurname.Text)) || 
-                    (string.IsNullOrEmpty(tbName.Text) || string.IsNullOrWhiteSpace(tbName.Text)) ||
-                    (string.IsNullOrEmpty(tbEmail.Text) || string.IsNullOrEmpty(tbEmail.Text)) || 
-                    (string.IsNullOrEmpty(tbPhone.Text) || string.IsNullOrWhiteSpace(tbPhone.Text)) ||
-                    (string.IsNullOrEmpty(tbLogin.Text) || string.IsNullOrWhiteSpace(tbLogin.Text) )||
-                    (string.IsNullOrEmpty(tbPass.Text) || string.IsNullOrWhiteSpace(tbPass.Text)))
+                if ((string.IsNullOrEmpty(surname) || string.IsNullOrWhiteSpace(surname)) ||
+                    (string.IsNullOrEmpty(name) || string.IsNullOrWhiteSpace(name)) ||
+                    (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(email)) ||
+                    (string.IsNullOrEmpty(phone) || string.IsNullOrWhiteSpace(phone)) ||
+                    (string.IsNullOrEmpty(login) || string.IsNullOrWhiteSpace(login)) ||
+                    (string.IsNullOrEmpty(password) || string.IsNullOrWhiteSpace(password)))
                 {
                     MessageBox.Show("Все поля должны быть заполнены!", "Ошибка!", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
@@ -73,28 +80,26 @@ namespace kind_farm.auth
                     {
                         users_table user_new = new users_table()
                         {
-                            login = tbLogin.Text,
-                            password = tbPass.Text,
-                            phone = tbPhone.Text,
-                            email = tbEmail.Text,
-                            name = tbName.Text,
-                            surname = tbSurname.Text,
-                            id_role_user = 3
+                            login = login,
+                            password = password,
+                            phone = phone,
+                            email = email,
+                            name = name,
+                            surname = surname,
+                            id_role_user = role
                         };
                         AppConn.modeldb.users_table.Add(user_new);
                         AppConn.modeldb.SaveChanges();
                         MessageBox.Show("Вы успешно зарегистрировались!", "Успех!", MessageBoxButton.OK, MessageBoxImage.Information);
-                        AppFrame.frame.GoBack();
+                        AppFrame.frame.Navigate(new authorization());
                     }
                     catch (Exception ex)
                     {
                         MessageBox.Show("Произошла ошибка: " + ex, "Ошибка!", MessageBoxButton.OK, MessageBoxImage.Error);
                     }
                 }
-              
-            }
+                return true;
         }
-
         private void tbSurname_KeyDown(object sender, KeyEventArgs e)
         {
             if ((e.Key < Key.A || e.Key > Key.Z) && e.Key != Key.Back)

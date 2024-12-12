@@ -19,7 +19,7 @@
             <Run Text="{Binding kind_product_table.nkind_product}"/>
         </TextBlock>
         <Button x:Name="btnBack" Content="Назад" HorizontalAlignment="Left" Margin="30,30,0,0" Background="#FF8BCEBD" FontSize="24" Foreground="#FF02354A" BorderBrush="#FF02354A" VerticalAlignment="Top" Height="45" Width="125" FontFamily="Verdana" Click="btnBack_Click"/>
-        <Image x:Name="photoItem" Source="{Binding currentPhoto}" Margin="92,122,683,122"/>
+        <Image x:Name="photoItem" Source="{Binding currentPhoto}" Margin="152,148,743,194"/>
         <TextBlock HorizontalAlignment="Left" Margin="590,80,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Height="30" Width="460" FontFamily="Verdana" FontSize="22">
             <Run Text="Категория: " />
             <Run Text="{Binding type_product_table.type_product}"/>

@@ -10,7 +10,7 @@
 
     <Grid>
         <Label x:Name="ls" Content="Выберите наименование:" HorizontalAlignment="Left" Margin="81,120,0,0" VerticalAlignment="Top" FontSize="24"/>
-        <TextBox x:Name="cbName" HorizontalAlignment="Left" Margin="221,162,0,0" VerticalAlignment="Top" Width="194" Height="36" FontSize="24" KeyDown="cbName_KeyDown"/>
+        <TextBox x:Name="cbName" HorizontalAlignment="Left" Text="{Binding name_product}" Margin="221,162,0,0" VerticalAlignment="Top" Width="194" Height="36" FontSize="24" KeyDown="cbName_KeyDown"/>
         <Label x:Name="ln" Content="Выберите тип:" HorizontalAlignment="Left" Margin="81,218,0,0" VerticalAlignment="Top" FontSize="24"/>
         <ComboBox x:Name="cbType" HorizontalAlignment="Left"  SelectedValue="{Binding products_table.id_type_product}" SelectedValuePath="type_product_table.type_product" ItemsSource="{Binding type_product_table}" DisplayMemberPath="type_product" Width="194" Height="36" Margin="221,260,0,0" VerticalAlignment="Top" FontSize="24" KeyDown="cbType_KeyDown" />
         <Label x:Name="le" Content="Выберите вид:" HorizontalAlignment="Left" Margin="81,299,0,0" VerticalAlignment="Top" FontSize="24"/>
@@ -20,9 +20,9 @@
         <Label x:Name="ll" Content="Выберите ед. измерения:" HorizontalAlignment="Left" Margin="602,120,0,0" VerticalAlignment="Top" FontSize="24"/>
         <ComboBox x:Name="cbUnit" HorizontalAlignment="Left" SelectedValue="{Binding products_table.id_unit}" SelectedValuePath="unit_table.unit" ItemsSource="{Binding unit_table}" DisplayMemberPath="unit" Margin="746,162,0,0" VerticalAlignment="Top"  Width="194" Height="36" FontSize="24" KeyDown="cbUnit_KeyDown"/>
         <Label x:Name="lpass" Content="Введите цену:" HorizontalAlignment="Left" Margin="602,294,0,0" VerticalAlignment="Top" FontSize="24"/>
-        <TextBox x:Name="tbCost" HorizontalAlignment="Left" Text="{Binding cost}" Margin="746,341,0,0" TextWrapping="Wrap" VerticalAlignment="Top"  Width="194" Height="36" FontSize="24" TextChanged="tbPass_TextChanged" KeyDown="tbCost_KeyDown"/>
+        <TextBox x:Name="tbCost" HorizontalAlignment="Left" Text="{Binding cost}" Margin="746,341,0,0" TextWrapping="Wrap" VerticalAlignment="Top"  Width="194" Height="36" FontSize="24" KeyDown="tbCost_KeyDown" TextChanged="tbCost_TextChanged"/>
         <Label x:Name="lpassrep" Content="Введите описание:" HorizontalAlignment="Left" Margin="621,387,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.382,0.404" FontSize="24"/>
-        <TextBox x:Name="tbDesc" HorizontalAlignment="Left"  Margin="746,429,0,0" VerticalAlignment="Top"  Width="244" Height="102" FontSize="24"  KeyDown="tbDesc_KeyDown"/>
+        <TextBox x:Name="tbDesc" HorizontalAlignment="Left"  Margin="746,429,0,0" VerticalAlignment="Top" Text="{Binding description}" Width="244" Height="102" FontSize="24"  KeyDown="tbDesc_KeyDown"/>
         <Button x:Name="btnSave" Content="Сохранить" HorizontalAlignment="Center" Margin="0,512,0,0" VerticalAlignment="Top" Height="47" Width="260" Background="#FF8BCEBD" FontSize="24" Foreground="#FF02354A" BorderBrush="#FF02354A" Click="btnSave_Click"/>
         <Button x:Name="btnBack" Content="Назад" HorizontalAlignment="Left" Margin="10,26,0,0" VerticalAlignment="Top" Height="44" Width="108" Background="#FF8BCEBD" FontSize="24" Foreground="#FF02354A" BorderBrush="#FF02354A" Click="btnBack_Click"/>
         <Label x:Name="llal" Content="Выберите аллерген:" HorizontalAlignment="Left" Margin="602,218,0,0" VerticalAlignment="Top" FontSize="24"/>

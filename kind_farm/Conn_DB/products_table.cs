@@ -46,7 +46,6 @@ namespace kind_farm.Conn_DB
                 }
             }
         }
-
         public virtual allergens_table allergens_table { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<cart_table> cart_table { get; set; }

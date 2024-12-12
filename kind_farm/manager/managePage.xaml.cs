@@ -39,7 +39,7 @@ namespace kind_farm.manager
 
         private void btnCatalog_Click(object sender, RoutedEventArgs e)
         {
-            AppFrame.frame.Navigate(new productsPage((sender as Button).DataContext as users_table));
+            AppFrame.frame.Navigate(new productsPage());
         }
 
         private void btnDel_Click(object sender, RoutedEventArgs e)

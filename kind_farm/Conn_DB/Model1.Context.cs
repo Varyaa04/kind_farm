@@ -29,7 +29,8 @@ namespace kind_farm.Conn_DB
                 _context = new Entities();
             return _context;
         }
-    
+
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             throw new UnintentionalCodeFirstException();

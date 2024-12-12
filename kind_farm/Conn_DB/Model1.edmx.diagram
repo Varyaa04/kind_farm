@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="890b8c9ae818453483720ac634c689b9" Name="Diagram1">
+      <Diagram DiagramId="dc290006e53449a48ab83abc2a1158f2" Name="Diagram1">
         <EntityTypeShape EntityType="Model.allergens_table" Width="1.5" PointX="0.75" PointY="4" IsExpanded="true" />
         <EntityTypeShape EntityType="Model.cart_table" Width="1.5" PointX="5.25" PointY="3.75" IsExpanded="true" />
         <EntityTypeShape EntityType="Model.kind_product_table" Width="1.5" PointX="0.75" PointY="7.125" IsExpanded="true" />
